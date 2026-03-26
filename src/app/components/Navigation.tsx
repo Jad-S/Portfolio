@@ -9,8 +9,8 @@ export function Navigation() {
 
   const links = [
     { path: '/', label: 'Home' },
-    { path: '/projects', label: 'Projecten' },
     { path: '/about', label: 'Over Mij' },
+    { path: '/projects', label: 'Projecten' },
     { path: '/contact', label: 'Contact' },
   ];
 

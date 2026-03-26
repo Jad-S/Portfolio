@@ -93,10 +93,16 @@ export function About() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <TypewriterText
-            text="Wie ben ik?"
-            className="text-4xl sm:text-5xl font-bold text-[#ff4500] mb-4 text-center"
-          />
+
+<div className="flex items-center gap-40">
+  {/* Tekst */}
+  <h1 className="text-4xl sm:text-5xl font-bold text-[#ff4500] mb-4 text-start">
+    In een notendop...
+  </h1>
+
+  {/* Horizontale lijn */}
+  <div className="h-[5px] w-70 bg-white mt-5"></div>
+</div>
         </motion.div>
         <br /><br />
 
@@ -110,6 +116,8 @@ export function About() {
               viewport={{ once: true }}
               className="flex-1"
             >
+              
+              
               <motion.h2
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -139,6 +147,7 @@ export function About() {
                 </button>
               </motion.div>
             </motion.div>
+            
 
             {/* RECHTS - Images */}
             <div className="flex-1 relative min-h-[600px]">
@@ -171,29 +180,59 @@ export function About() {
 
         <br /><br /><br />
 
+{/* SCROLL INDICATOR */}
+<div className="flex flex-col items-start mb-10 ml-55 -mt-16">
+  <div className="text-gray-400 text-sm mb-2">Scroll</div>
 
-        {/* VALUES */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-white text-center mb-12">
-            Meer over mijn werk?
-          </h2>
+  {/* Lijn */}
+  <div className="w-[2px] h-79 bg-gray-500"></div>
+  <br /><br /><br /><br />
+</div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => (
-              <motion.div
-                key={index}
-                className="p-6 bg-white/5 backdrop-blur-sm rounded-xl border-2 border-white/10 text-center hover:border-[#ff4500]"
-              >
-                <div className="text-[#ff4500] mb-4 flex justify-center">
-                  {value.icon}
-                </div>
-                <h3 className="text-white font-semibold mb-2">{value.title}</h3>
-                <p className="text-gray-400 text-sm">{value.description}</p>
-              </motion.div>
-            ))}
+<div className="mb-20">
+  <h2 className="text-3xl font-bold text-white text-center mb-16">
+    Meer over mijn werk?
+  </h2>
+
+  <div className="space-y-16">
+
+    {values.map((value, index) => (
+<motion.div
+  key={index}
+  initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true, amount: 0.4 }}
+  transition={{ duration: 0.6, ease: "easeOut" }}
+  className={`flex ${
+    index % 2 === 0 ? "justify-start" : "justify-end"
+  }`}
+>
+        <div className="max-w-md">
+          <div className="text-[#ff4500] mb-3 flex">
+            {value.icon}
           </div>
+          <h3 className="text-white text-xl font-semibold mb-2">
+            {value.title}
+          </h3>
+          <p className="text-gray-400">
+            {value.description}
+          </p>
         </div>
+      </motion.div>
+    ))}
 
+  </div>
+</div>
+<br /><br /><br />
+<div className="flex justify-end mb-10 -mt-16 mr-50">
+  <div className="flex flex-col items-center">
+    <div className="text-gray-400 text-sm mb-2">Scroll</div>
+
+    {/* Lijn */}
+    <div className="w-[2px] h-79 bg-gray-500"></div>
+  </div>
+</div>
+<br /><br /><br />
         {/* SKILLS */}
 {/* SKILLS */}
 <div className="mb-20">
@@ -275,8 +314,18 @@ export function About() {
 
   </div>
 </div>
+<br />
 
-{/* 😄 NOT SO SERIOUS STATUS */}
+<div className="flex justify-center mb-10 -mt-16">
+  <div className="flex flex-col items-center">
+    <div className="text-gray-400 text-sm mb-2">Scroll</div>
+
+    {/* Lijn */}
+    <div className="w-[2px] h-79 bg-gray-500"></div>
+  </div>
+</div>
+
+<br />
 <motion.div
   initial={{ opacity: 0, y: 30 }}
   whileInView={{ opacity: 1, y: 0 }}

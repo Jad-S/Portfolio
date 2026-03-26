@@ -181,26 +181,6 @@ export function Contact() {
                 ))}
               </div>
             </div>
-
-            <div className="bg-white/5 light:bg-black/5 backdrop-blur-sm rounded-xl p-8 border-2 border-white/10 light:border-black/10">
-              <h3 className="text-xl font-bold text-white light:text-black mb-4">
-                Beschikbaarheid
-              </h3>
-              <div className="space-y-2 text-sm text-gray-400 light:text-gray-600">
-                <p>Maandag - Vrijdag: 9:00 - 18:00</p>
-                <p>Reactietijd: Binnen 24 uur</p>
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-br from-[#ff4500]/20 to-orange-600/20 backdrop-blur-sm rounded-xl p-8 border-2 border-[#ff4500]/40">
-              <h3 className="text-xl font-bold text-white light:text-black mb-4">
-                Laten We Samenwerken!
-              </h3>
-              <p className="text-gray-300 light:text-gray-700">
-                Of je nu een nieuw project start, hulp nodig hebt met een bestaande
-                applicatie of een website - stuur me gewoon een bericht en ik neem zo snel mogelijk contact met je op.
-              </p>
-            </div>
           </motion.div>
         </div>
       </div>
