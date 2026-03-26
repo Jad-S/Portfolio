@@ -58,15 +58,19 @@ export function About() {
       Mijn naam is <span className="text-[#ff4500]">Jad</span>, ik ben 20 jaar oud en een{" "}
       <span className="text-[#ff4500]">Frontend</span> en{" "}
       <span className="text-[#ff4500]">Backend</span> developer uit Enschede, Nederland.
+      <br />
+      <div className="h-[5px] w-70 bg-[#ff4500] mt-5"></div>
       {/* <br /><br />
       Hieronder lees je meer over mijn <span className="text-[#ff4500]">achtergrond</span> en <span className="text-[#ff4500]">privéleven</span>...  */}
-      <br /><br />
+      <br />
       Ik ben geboren in <span className="text-[#ff4500]">Syrië</span>, maar door de burgeroorlog moest ik op mijn dertiende naar Nederland vluchten. De stap naar Nederland was  in het begin een moeilijke ervaring voor mij zoals verwacht. Alles was nieuw en ik moest opnieuw mijn weg vinden. Ook het leren van de taal was in het begin een uitdaging. Stap voor stap heb ik werd alles makkelijker vooral nadat ik het taal kon beter begrijpen en spreken, en dat heeft mij ook geholpen om richting te geven aan mijn toekomst. Mijn interesse in computers en het zelf bouwen van dingen is altijd gebleven, en dat is uiteindelijk ook de reden dat ik voor softwareontwikkeling heb gekozen.
       <br /><br />
       Ik kan goed overweg met <span className="text-[#ff4500]">HTML</span>,{" "}
       <span className="text-[#ff4500]">CSS</span>,{" "}
       <span className="text-[#ff4500]">Javascript</span> en{" "}
       <span className="text-[#ff4500]">C#</span>. Ook ben ik goed in opzetten van databases. Ik vind het leuk om aan frontend en backend te werken, maar mijn voorkeur gaat meestal naar backend, daarnaast vind ik het heel leuk om dingen te bouwen van A tot Z. Ik let daarbij niet alleen op dat iets werkt, maar ook op hoe het eruitziet.
+      <br /><br />
+      <div className="h-[5px] w-70 bg-[#ff4500] mt-5"></div>
       <br /><br />
       In mijn vrije tijd ben ik graag actief met <span className="text-[#ff4500]">sport</span> en <span className="text-[#ff4500]">gym</span>. Ik hou van <span className="text-[#ff4500]">zwemmen</span> en breng graag tijd door in de <span className="text-[#ff4500]">natuur</span>, vooral in de <span className="text-[#ff4500]">parken</span>.
       <br /><br />
@@ -239,7 +243,8 @@ export function About() {
   <h2 className="text-3xl font-bold text-white text-center mb-12">
     Technische Vaardigheden
   </h2>
-
+<div className="h-[5px] w-70 bg-[#ff4500] mt-5"></div>
+<br /><br />
   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 
     {/* 🔥 FRONTEND */}
@@ -249,7 +254,7 @@ export function About() {
       viewport={{ once: true }}
       className="p-6 rounded-xl bg-gradient-to-br from-[#ff4500]/10 to-transparent border border-[#ff4500]/20"
     >
-      <h3 className="text-xl font-bold text-[#ff4500] mb-6">
+      <h3 className="text-xl font-bold text-white mb-6">
         Frontend...
       </h3>
 
@@ -284,7 +289,7 @@ export function About() {
       viewport={{ once: true }}
       className="p-6 rounded-xl bg-gradient-to-br from-white/5 to-transparent border border-white/10"
     >
-      <h3 className="text-xl font-bold text-white mb-6">
+      <h3 className="text-xl font-bold text-[#ff4500] mb-6">
         Backend...
       </h3>
 
