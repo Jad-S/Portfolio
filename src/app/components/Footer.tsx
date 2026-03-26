@@ -14,18 +14,29 @@ export function Footer() {
 
   return (
     <>
-      {/* ⚡ Uitroepteken trigger */}
-      <motion.button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-4 right-4 z-50 w-10 h-10 bg-[#ff4500] text-white font-bold rounded-full shadow-xl flex items-center justify-center cursor-pointer"
-        animate={{
-          scale: [1, 1.2, 1],
-          rotate: [0, 15, -15, 0],
-        }}
-        transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-      >
-        !
-      </motion.button>
+      {/* Uitroepteken trigger */}
+<motion.button
+  onClick={() => setIsOpen(!isOpen)}
+  className="fixed bottom-4 right-4 z-50 w-10 h-10 bg-[#ff4500] text-white font-bold rounded-full shadow-xl flex items-center justify-center cursor-pointer"
+>
+  <motion.span
+    key={isOpen ? "arrow" : "bang"} // belangrijk voor switch animatie
+    initial={{ scale: 0, rotate: -180 }}
+    animate={{
+  scale: 1,
+  rotate: 0,
+  y: isOpen ? [0, 5, 0] : 0
+}}
+transition={{
+  duration: 0.3,
+  y: { repeat: isOpen ? Infinity : 0, duration: 1 }
+}}
+    exit={{ scale: 0 }}
+    className="text-lg"
+  >
+    {isOpen ? "↓" : "!"}
+  </motion.span>
+</motion.button>
 
       {/* ⚡ Uitklapbare dunne footer */}
       <motion.footer

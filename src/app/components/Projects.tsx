@@ -106,9 +106,10 @@ export function Projects() {
           className="text-center mb-16"
         >
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-<span className="text-[#ff4500] hover:text-[#ff6a33] transition">
-  Mijn Projecten
-</span>          </h1>
+            <span className="text-[#ff4500] hover:text-[#ff6a33] transition">
+              Mijn Projecten
+            </span>
+          </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Een selectie van mijn recente werk en projecten
           </p>
@@ -116,8 +117,9 @@ export function Projects() {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <motion.div
+              key={project.id}
               onClick={() => setSelectedProject(project)}
               className="group bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden border-2 border-white/10 hover:border-[#ff4500] transition-all duration-300 hover:shadow-xl hover:shadow-[#ff4500]/20 cursor-pointer w-full max-w-sm"
             >
@@ -141,9 +143,7 @@ export function Projects() {
                 <h3 className="text-2xl font-semibold text-white mb-2">
                   {project.title}
                 </h3>
-                <p className="text-gray-400 mb-4">
-                  {project.description}
-                </p>
+                <p className="text-gray-400 mb-4">{project.description}</p>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2">

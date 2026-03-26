@@ -36,10 +36,10 @@ export function Home() {
                 transition={{ delay: 0.6 }}
               >
                 <Link
-                  to="/projects"
+                  to="/about"
                   className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-[#ff4500] text-white rounded-lg hover:bg-[#ff6a33] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#ff4500]/50"
                 >
-                  Bekijk Mijn Werk
+                  Ontdek Meer...
                   <ArrowRight size={20} />
                 </Link>
                 <Link

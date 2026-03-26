@@ -198,7 +198,7 @@ export function Contact() {
               </h3>
               <p className="text-gray-300 light:text-gray-700">
                 Of je nu een nieuw project start, hulp nodig hebt met een bestaande
-                applicatie of een website - ik sta altijd open voor nieuwe kansen en uitdagingen.
+                applicatie of een website - stuur me gewoon een bericht en ik neem zo snel mogelijk contact met je op.
               </p>
             </div>
           </motion.div>
