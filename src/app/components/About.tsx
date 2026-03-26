@@ -211,7 +211,7 @@ export function About() {
       className="p-6 rounded-xl bg-gradient-to-br from-[#ff4500]/10 to-transparent border border-[#ff4500]/20"
     >
       <h3 className="text-xl font-bold text-[#ff4500] mb-6">
-        Frontend
+        Frontend...
       </h3>
 
       {skills
@@ -246,7 +246,7 @@ export function About() {
       className="p-6 rounded-xl bg-gradient-to-br from-white/5 to-transparent border border-white/10"
     >
       <h3 className="text-xl font-bold text-white mb-6">
-        Backend
+        Backend...
       </h3>
 
       {skills
@@ -321,7 +321,7 @@ export function About() {
     >
       <p className="text-gray-400 text-sm mb-1">Nu?</p>
       <p className="text-white">
-        Of in de gym  
+        Of in de Basic-Fit  
         <br />
         of een film aan het kijken  
         <br />
