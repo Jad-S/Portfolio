@@ -63,8 +63,6 @@ export function About() {
       {/* <br /><br />
       Hieronder lees je meer over mijn <span className="text-[#ff4500]">achtergrond</span> en <span className="text-[#ff4500]">privéleven</span>...  */}
       <br />
-      Ik ben geboren in <span className="text-[#ff4500]">Syrië</span>, maar door de burgeroorlog moest ik op mijn dertiende naar Nederland vluchten. De stap naar Nederland was  in het begin een moeilijke ervaring voor mij zoals verwacht. Alles was nieuw en ik moest opnieuw mijn weg vinden. Ook het leren van de taal was in het begin een uitdaging. Stap voor stap heb ik werd alles makkelijker vooral nadat ik het taal kon beter begrijpen en spreken, en dat heeft mij ook geholpen om richting te geven aan mijn toekomst. Mijn interesse in computers en het zelf bouwen van dingen is altijd gebleven, en dat is uiteindelijk ook de reden dat ik voor softwareontwikkeling heb gekozen.
-      <br /><br />
       Ik kan goed overweg met <span className="text-[#ff4500]">HTML</span>,{" "}
       <span className="text-[#ff4500]">CSS</span>,{" "}
       <span className="text-[#ff4500]">Javascript</span> en{" "}
@@ -105,8 +103,7 @@ export function About() {
   </h1>
 
   {/* Horizontale lijn */}
-  <div className="h-[5px] w-70 bg-white mt-5"></div>
-</div>
+<div className="h-[5px] w-70 mt-5 bg-[repeating-linear-gradient(45deg,white,white_10px,#ff4500_10px,#ff4500_20px)]"></div></div>
         </motion.div>
         <br /><br />
 
@@ -158,7 +155,6 @@ export function About() {
               {[aboutmeimg3, aboutmeimg2, aboutmeimg1, aboutmeimg4].map((img, i) => (
                 <motion.div
                   key={i}
-                  whileHover={{ scale: 1.05 }}
                   className={`absolute rounded-2xl overflow-hidden shadow-2xl border-2 border-[#ff4500]`}
                   style={{
                     width: i % 2 === 0 ? 224 : 256,
@@ -182,17 +178,18 @@ export function About() {
         </div>
         <br /><br /><br />
 
-        <br /><br /><br />
-
 {/* SCROLL INDICATOR */}
-<div className="flex flex-col items-start mb-10 ml-55 -mt-16">
-  <div className="text-gray-400 text-sm mb-2">Scroll</div>
+       <div className="flex flex-col items-center">
+    <div className="text-gray-400 text-sm -ml-170">S  C  R  O L  L</div>
 
-  {/* Lijn */}
-  <div className="w-[2px] h-79 bg-gray-500"></div>
-  <br /><br /><br /><br />
-</div>
+    {/* Lijn */}
+    <div className="w-[2px] h-79 bg-gray-500 -ml-170"></div>
 
+                <div className="h-[5px] w-70 bg-[#ff4500] -mr-150"></div>
+
+  </div>
+<br /><br /><br /><br />
+<br /><br /><br /><br />
 <div className="mb-20">
   <h2 className="text-3xl font-bold text-white text-center mb-16">
     Meer over mijn werk?
@@ -228,107 +225,90 @@ export function About() {
   </div>
 </div>
 <br /><br /><br />
-<div className="flex justify-end mb-10 -mt-16 mr-50">
-  <div className="flex flex-col items-center">
-    <div className="text-gray-400 text-sm mb-2">Scroll</div>
+        <div className="flex flex-col items-center">
+    <div className="text-[#ff4500] text-sm mb-2 -mr-170">S  C  R  O L  L</div>
 
     {/* Lijn */}
-    <div className="w-[2px] h-79 bg-gray-500"></div>
+    <div className="w-[2px] h-79 bg-[#ff4500] -mr-170"></div>
   </div>
-</div>
+            <div className="h-[5px] w-70 bg-white mt-5"></div>
+
 <br /><br /><br />
         {/* SKILLS */}
-{/* SKILLS */}
-<div className="mb-20">
-  <h2 className="text-3xl font-bold text-white text-center mb-12">
-    Technische Vaardigheden
+<div className="mb-20 max-w-5xl mx-auto relative">
+
+  <h2 className="text-3xl font-semibold text-white mb-16 text-center">
+    How I think <span className="text-[#ff4500]">&</span> build
   </h2>
-<div className="h-[5px] w-70 bg-[#ff4500] mt-5"></div>
-<br /><br />
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-    {/* 🔥 FRONTEND */}
-    <motion.div
-      initial={{ opacity: 0, x: -30 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      className="p-6 rounded-xl bg-gradient-to-br from-[#ff4500]/10 to-transparent border border-[#ff4500]/20"
-    >
-      <h3 className="text-xl font-bold text-white mb-6">
-        Frontend...
-      </h3>
+  {/* CENTER LINE */}
+  <div className="absolute left-1/2 top-0 h-full w-[2px] bg-white/10 -translate-x-1/2" />
 
-      {skills
-        .filter(skill =>
-          ["React & TypeScript", "Javascript", "UI/UX Design", "HTML/CSS"].includes(skill.name)
-        )
-        .map((skill, index) => (
-          <div key={index} className="mb-4">
-            <div className="flex justify-between mb-1">
-              <span className="text-white">{skill.name}</span>
-              <span className="text-[#ff4500]">{skill.level}%</span>
-            </div>
+  <div className="space-y-24">
 
-            <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-              <motion.div
-                initial={{ width: 0 }}
-                whileInView={{ width: `${skill.level}%` }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: index * 0.1 }}
-                className="h-full bg-[#ff4500]"
-              />
-            </div>
+{[
+  {
+    title: "Understanding the problem",
+    text: "Ik probeer eerst goed te begrijpen wat er precies gemaakt moet worden. Niet alleen wat er gevraagd wordt, maar ook waarom. Zo voorkom ik dat ik later dingen opnieuw moet doen.",
+    side: "left",
+  },
+  {
+    title: "Thinking things through",
+    text: "Ik denk eerst na over hoe alles in elkaar zit voordat ik begin met bouwen. Dat maakt het later makkelijker om alles netjes en logisch op te zetten.",
+    side: "right",
+  },
+  {
+    title: "Backend work",
+    text: "Ik werk graag aan de backend. Daar komt alles samen. Ik gebruik bijvoorbeeld C# en .NET om dingen te bouwen die goed en stabiel werken.",
+    side: "left",
+  },
+  {
+    title: "Frontend",
+    text: "Ik vind het belangrijk dat alles er netjes uitziet en fijn werkt. Kleine dingen zoals spacing en beweging maken al veel verschil.",
+    side: "right",
+  },
+    ].map((item, i) => {
+
+      const isLeft = item.side === "left";
+
+      return (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6 }}
+          className={`flex ${isLeft ? "justify-start pr-12" : "justify-end pl-12"}`}
+        >
+
+          <div className="max-w-md">
+
+            {/* TITLE */}
+            <h3 className="text-white font-semibold text-lg mb-2">
+             <span className="text-[#ff4500]">{item.title}</span> 
+            </h3>
+
+            {/* TEXT */}
+            <p className="text-gray-400 text-sm leading-relaxed">
+              {item.text}
+            </p>
+
           </div>
-        ))}
-    </motion.div>
 
-    {/* 🔥 BACKEND */}
-    <motion.div
-      initial={{ opacity: 0, x: 30 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      className="p-6 rounded-xl bg-gradient-to-br from-white/5 to-transparent border border-white/10"
-    >
-      <h3 className="text-xl font-bold text-[#ff4500] mb-6">
-        Backend...
-      </h3>
-
-      {skills
-        .filter(skill =>
-          ["Databases", "C#", "PHP"].includes(skill.name)
-        )
-        .map((skill, index) => (
-          <div key={index} className="mb-4">
-            <div className="flex justify-between mb-1">
-              <span className="text-white">{skill.name}</span>
-              <span className="text-[#ff4500]">{skill.level}%</span>
-            </div>
-
-            <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-              <motion.div
-                initial={{ width: 0 }}
-                whileInView={{ width: `${skill.level}%` }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: index * 0.1 }}
-                className="h-full bg-[#ff4500]"
-              />
-            </div>
-          </div>
-        ))}
-    </motion.div>
+        </motion.div>
+      );
+    })}
 
   </div>
+
 </div>
 <br />
 
-<div className="flex justify-center mb-10 -mt-16">
-  <div className="flex flex-col items-center">
-    <div className="text-gray-400 text-sm mb-2">Scroll</div>
+      <div className="h-[5px] w-70 bg-[#ff4500] mt-5"></div>
+      <br /><br /><br />
+            <div className="h-[5px] w-70 bg-white mt-5"></div>
 
-    {/* Lijn */}
-    <div className="w-[2px] h-79 bg-gray-500"></div>
-  </div>
-</div>
+
 
 <br />
 <motion.div

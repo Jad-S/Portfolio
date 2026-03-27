@@ -1,5 +1,4 @@
 import { Link, useLocation } from 'react-router';
-import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 
@@ -9,21 +8,21 @@ export function Navigation() {
 
   const links = [
     { path: '/', label: 'Home' },
-    { path: '/about', label: 'Over Mij' },
-    { path: '/projects', label: 'Projecten' },
-    { path: '/contact', label: 'Contact' },
+    { path: '/about', label: 'Auteur' },
+    { path: '/contact', label: 'Hire me' },
   ];
 
   const isActive = (path: string) => {
+    if (path.startsWith('#')) return false; // anchors geen active state
     if (path === '/') return location.pathname === path;
     return location.pathname.startsWith(path);
   };
 
-const playSound = () => {
-  const audio = new Audio('https://www.soundjay.com/misc/sounds/page-flip-02.mp3');
-  audio.volume = 0.25;
-  audio.play();
-};
+  const playSound = () => {
+    const audio = new Audio('https://www.soundjay.com/misc/sounds/page-flip-02.mp3');
+    audio.volume = 0.25;
+    audio.play();
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-lg border-b border-[#ff4500]/20">
@@ -31,7 +30,7 @@ const playSound = () => {
 
         <div className="flex items-center justify-between h-16">
 
-          {/* 🔥 EXACT JOUW LOGO (NIET AANGERAAD) */}
+          {/* LOGO */}
           <Link to="/" className="group relative">
             <motion.div
               className="flex items-center"
@@ -72,7 +71,7 @@ const playSound = () => {
             </motion.div>
           </Link>
 
-          {/* 🔥 LINKS + HAMBURGER */}
+          {/* LINKS + HAMBURGER */}
           <div className="flex items-center gap-4">
 
             <AnimatePresence>
@@ -91,41 +90,53 @@ const playSound = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
                     >
-                      <Link
-                        to={link.path}
-                        onClick={() => setIsOpen(false)}
-                        className={`text-white hover:text-[#ff4500] transition ${
-                          isActive(link.path) ? 'text-[#ff4500]' : ''
-                        }`}
-                      >
-                        {link.label}
-                      </Link>
+                      {link.path.startsWith('#') ? (
+                        <a
+                          href={link.path}
+                          onClick={() => setIsOpen(false)}
+                          className="text-white hover:text-[#ff4500] transition"
+                        >
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link
+                          to={link.path}
+                          onClick={() => setIsOpen(false)}
+                          className={`text-white hover:text-[#ff4500] transition ${
+                            isActive(link.path) ? 'text-[#ff4500]' : ''
+                          }`}
+                        >
+                          {link.label}
+                        </Link>
+                      )}
                     </motion.div>
                   ))}
                 </motion.div>
               )}
             </AnimatePresence>
 
-          <motion.button
-  onClick={() => {
-    setIsOpen(!isOpen);
-    playSound();
-  }}            className="w-10 h-10 flex flex-col justify-center items-center gap-1.5"
-            whileTap={{ scale: 0.9 }}
-          >
-            <motion.span
-              className="w-6 h-[3px] bg-[#ff4500] rounded shadow-[0_0_8px_#ff4500]"
-              animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-            />
-            <motion.span
-              className="w-6 h-[3px] bg-[#ff4500] rounded shadow-[0_0_8px_#ff4500]"
-              animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-            />
-            <motion.span
-              className="w-6 h-[3px] bg-[#ff4500] rounded shadow-[0_0_8px_#ff4500]"
-              animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-            />
-          </motion.button>
+            {/* HAMBURGER */}
+            <motion.button
+              onClick={() => {
+                setIsOpen(!isOpen);
+                playSound();
+              }}
+              className="w-10 h-10 flex flex-col justify-center items-center gap-1.5"
+              whileTap={{ scale: 0.9 }}
+            >
+              <motion.span
+                className="w-6 h-[3px] bg-[#ff4500] rounded shadow-[0_0_8px_#ff4500]"
+                animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+              />
+              <motion.span
+                className="w-6 h-[3px] bg-[#ff4500] rounded shadow-[0_0_8px_#ff4500]"
+                animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+              />
+              <motion.span
+                className="w-6 h-[3px] bg-[#ff4500] rounded shadow-[0_0_8px_#ff4500]"
+                animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+              />
+            </motion.button>
 
           </div>
 

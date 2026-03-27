@@ -1,175 +1,121 @@
-import { motion } from 'motion/react';
-import { useState } from 'react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
-import { ProjectModal } from './ProjectModal';
-
-import screenshot1 from './figma/screenshot1.png';
-import screenshot2 from './figma/screenshot2.png';
-import screenshot3 from './figma/screenshot3.png';
-import screenshot4 from './figma/screenshot4.jpg';
-
-import project1img from './figma/project1img.png';
-import project2img from './figma/Project2img.png';
-import project3img from './figma/Project3img.png';
+import { motion } from "motion/react";
+import { Link } from "react-router";
+import { Code, Database, Cpu } from "lucide-react";
 
 interface Project {
   id: number;
   title: string;
   description: string;
-  image: string;
-  tags: string[];
-  links: {
-    github: string;
-    live: string;
-  };
-  fullDescription?: string;
-  screenshots?: string[];
-  features?: string[];
+  icon: any;
 }
 
 export function Projects() {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
   const projects: Project[] = [
     {
       id: 1,
-      title: 'Top2000 Project',
+      title: "Top2000 Project",
       description:
-        'Een webapplicatie waarin de NPO Radio 2 Top 2000 is nagebouwd met zowel front-end als back-end functionaliteiten.',
-      fullDescription:
-        'In dit project heb ik samen met mijn groep een webapplicatie gebouwd die de bekende NPO Radio 2 Top 2000 nabootst...',
-      image: project1img,
-      tags: ['C#', '.NET', 'React', 'JWT', 'REST API', 'SSMS'],
-      links: {
-        github: 'https://github.com',
-        live: 'https://example.com',
-      },
-      features: [
-        'Top 2000 lijst met nummers en artiesten',
-        'Zoek-, sorteer- en filterfunctionaliteit',
-        'JWT authenticatie',
-        'Admin dashboard',
-      ],
-      screenshots: [screenshot1, screenshot2],
+        "In dit project heb ik een full-stack webapplicatie gebouwd met React en .NET, waarin ik de Top2000 van NPO Radio 2 heb nagebouwd. Ik heb gewerkt met API-integratie, filtering en zoekfunctionaliteit, en heb ervoor gezorgd dat de UI volledig responsive is.",
+      icon: Code,
     },
     {
       id: 2,
-      title: 'Dierentuin Website',
+      title: "Dierentuin Website",
       description:
-        'Een webapplicatie voor het beheren en tonen van dieren met een adminpaneel en database.',
-      fullDescription:
-        'Tijdens mijn tweede leerjaar heb ik samen met mijn groep een website voor een dierentuin ontwikkeld...',
-      image: project2img,
-      tags: ['C#', 'Razor Pages', 'SQL', 'CRUD', '.NET'],
-      links: {
-        github: 'https://github.com',
-        live: 'https://example.com',
-      },
-      features: [
-        'Dieren overzicht',
-        'Adminpaneel',
-        'CRUD functionaliteit',
-        'SQL database koppeling',
-      ],
-      screenshots: ['/images/zoo/screenshot1.png', '/images/zoo/screenshot2.png'],
+        "Voor dit project heb ik een CRUD webapplicatie ontwikkeld met Razor Pages en een SQL database. Ik heb een systeem gebouwd waarmee dieren kunnen worden toegevoegd, aangepast en verwijderd.",
+      icon: Database,
     },
     {
       id: 3,
-      title: 'Arduino RFID Beveiligingssysteem',
+      title: "Arduino Systeem",
       description:
-        'Een microcontroller project met Arduino waarbij een RFID-gebaseerd beveiligingssysteem is gebouwd.',
-      fullDescription:
-        'Als onderdeel van mijn opleiding heb ik gewerkt met Arduino en een RFID beveiligingssysteem ontwikkeld...',
-      image: project3img,
-      tags: ['Arduino', 'RFID', 'Microcontrollers', 'Hardware'],
-      links: {
-        github: 'https://github.com',
-        live: 'https://example.com',
-      },
-      features: [
-        'RFID scanner',
-        'LCD scherm',
-        'LED indicatoren',
-        'Drukknop input',
-      ],
-      screenshots: [screenshot4, screenshot3],
+        "In dit project heb ik een beveiligingssysteem gebouwd met een RFID-module en Arduino. Het systeem leest tags en geeft toegang op basis van de juiste kaart.",
+      icon: Cpu,
     },
   ];
 
-  return (
-    <div className="min-h-screen py-20 px-4">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            <span className="text-[#ff4500] hover:text-[#ff6a33] transition">
-              Mijn Projecten
-            </span>
-          </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Een selectie van mijn recente werk en projecten
-          </p>
-        </motion.div>
+  const SplitText = ({ text }: { text: string }) => {
+    const letters = text.split("");
+    const middle = letters.length / 2;
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
-          {projects.map((project) => (
-            <motion.div
-              key={project.id}
-              onClick={() => setSelectedProject(project)}
-              className="group bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden border-2 border-white/10 hover:border-[#ff4500] transition-all duration-300 hover:shadow-xl hover:shadow-[#ff4500]/20 cursor-pointer w-full max-w-sm"
+    return (
+      <span className="inline-block">
+        {letters.map((char, i) => {
+          const offset = i - middle;
+          return (
+            <motion.span
+              key={i}
+              className="inline-block"
+              variants={{
+                hover: {
+                  x: offset * 3,
+                },
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 200,
+                damping: 15,
+              }}
             >
-              {/* Image */}
-              <div className="relative overflow-hidden aspect-video">
-                <ImageWithFallback
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60" />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50">
-                  <span className="text-white font-semibold text-lg">
-                    Klik voor details →
-                  </span>
-                </div>
-              </div>
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          );
+        })}
+      </span>
+    );
+  };
 
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-2xl font-semibold text-white mb-2">
-                  {project.title}
-                </h3>
-                <p className="text-gray-400 mb-4">{project.description}</p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 bg-[#ff4500]/20 text-[#ff4500] border border-[#ff4500]/30 rounded-full text-sm"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+  return (
+    <section className="py-32 px-6 max-w-6xl mx-auto">
+      <div className="mb-24">
+        <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+          <span className="text-[#ff4500]">Mijn Creaties</span>.
+        </h1>
       </div>
+      
+      <div className="flex flex-col gap-32">
+        {projects.map((project, index) => {
+          const isReversed = index % 2 === 1;
+          const Icon = project.icon;
 
-      {/* Modal */}
-      {selectedProject && (
-        <ProjectModal
-          project={selectedProject}
-          isOpen={!!selectedProject}
-          onClose={() => setSelectedProject(null)}
-        />
-      )}
-    </div>
+          return (
+            <Link
+              key={project.id}
+              to={`/project/${project.id}`}
+              className="group block -m-4 p-4 rounded-3xl hover:bg-white/5 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#ff4500]/30"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className={isReversed ? "md:order-2" : ""}
+                >
+                  <motion.h3
+                    className="text-4xl sm:text-5xl font-bold text-white mb-4 group-hover:text-[#ff4500] transition-all duration-500 cursor-pointer"
+                    whileHover="hover"
+                  >
+                    <SplitText text={project.title} />
+                  </motion.h3>
+                  <p className="text-gray-400 text-lg max-w-md">
+                    {project.description}
+                  </p>
+                </motion.div>
+
+                <div className={`flex justify-center ${isReversed ? "md:order-1" : ""}`}>
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 3 }}
+                    transition={{ type: "spring", stiffness: 200 }}
+                    className="w-40 h-40 rounded-2xl border border-white/10 flex items-center justify-center text-[#ff4500] shadow-lg shadow-[#ff4500]/10 group-hover:shadow-[#ff4500]/25 transition-all duration-300"
+                  >
+                    <Icon size={80} />
+                  </motion.div>
+                </div>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+    </section>
   );
 }

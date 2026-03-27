@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { Mail, Phone, Send, X } from 'lucide-react';
+import { Mail, Phone, Send } from 'lucide-react';
 import { useState } from 'react';
 
 export function Contact() {
@@ -20,169 +20,108 @@ export function Contact() {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // voorkomt reload
+    e.preventDefault();
     setShowToast(true);
     setTimeout(() => setShowToast(false), 4000);
     setFormData({ name: '', email: '', message: '' });
   };
 
   const contactInfo = [
-    { icon: <Mail size={24} />, title: 'Email', content: 'jadslwm22@gmail.com', link: 'mailto:jadslwm22@gmail.com' },
-    { icon: <Phone size={24} />, title: 'Telefoon', content: '+31 6 85067418', link: 'tel:+31685067418' },
+    { icon: <Mail size={14} />, title: 'Email', content: 'jadslwm22@gmail.com', link: 'mailto:jadslwm22@gmail.com' },
+    { icon: <Phone size={14} />, title: 'Telefoon', content: '+31 6 85067418', link: 'tel:+31685067418' },
   ];
 
   return (
-    <div className="min-h-screen py-20 px-4 relative">
+    <div className="min-h-screen px-6 py-16">
+
       {/* TOAST */}
       <AnimatePresence>
         {showToast && (
           <motion.div
-            initial={{ opacity: 0, y: -50 }}
+            initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -50 }}
-            className="fixed top-6 left-1/2 -translate-x-1/2 bg-[#ff4500] text-white px-6 py-3 rounded-xl shadow-lg flex items-center gap-4 z-50"
+            exit={{ opacity: 0, y: -15 }}
+            className="fixed top-6 left-1/2 -translate-x-1/2 text-xs bg-white text-black px-3 py-1.5 rounded-full z-50"
           >
-            <span>Bedankt voor je bericht! Ik neem snel contact op.</span>
-            <X
-              size={20}
-              className="cursor-pointer hover:opacity-70"
-              onClick={() => setShowToast(false)}
-            />
+            Bericht verzonden
           </motion.div>
         )}
       </AnimatePresence>
 
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
+      <div className="max-w-2xl mx-auto">
+
+        {/* TITLE */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          className="mb-12"
         >
-          <h1 className="text-4xl sm:text-5xl font-bold text-white light:text-black mb-4">
-            Neem Contact Op
+          <h1 className="text-4xl font-semibold tracking-tight text-white">
+            Contact
           </h1>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <div className="bg-white/5 light:bg-black/5 backdrop-blur-sm rounded-xl p-8 border-2 border-white/10 light:border-black/10">
-              <h2 className="text-2xl font-bold text-white light:text-black mb-6">
-                Stuur een Bericht
-              </h2>
-              <form
-                action="https://formspree.io/f/mrbqkxyz"
-                method="POST"
-                onSubmit={handleSubmit}
-                className="space-y-6"
-              >
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-white light:text-black mb-2 text-sm font-medium"
-                  >
-                    Naam
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-white/5 light:bg-black/5 border-2 border-white/10 light:border-black/10 rounded-lg text-white light:text-black placeholder-gray-400 light:placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#ff4500] focus:border-[#ff4500] transition-all"
-                    placeholder="Je naam"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-white light:text-black mb-2 text-sm font-medium"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-white/5 light:bg-black/5 border-2 border-white/10 light:border-black/10 rounded-lg text-white light:text-black placeholder-gray-400 light:placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#ff4500] focus:border-[#ff4500] transition-all"
-                    placeholder="je.email@voorbeeld.nl"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-white light:text-black mb-2 text-sm font-medium"
-                  >
-                    Bericht
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    className="w-full px-4 py-3 bg-white/5 light:bg-black/5 border-2 border-white/10 light:border-black/10 rounded-lg text-white light:text-black placeholder-gray-400 light:placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#ff4500] focus:border-[#ff4500] transition-all resize-none"
-                    placeholder="Je bericht..."
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#ff4500] text-white rounded-lg hover:bg-[#ff6a33] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#ff4500]/50"
-                >
-                  Verstuur Bericht
-                  <Send size={20} />
-                </button>
-              </form>
-            </div>
-          </motion.div>
+        {/* FORM */}
+        <form
+          action="https://formspree.io/f/mrbqkxyz"
+          method="POST"
+          onSubmit={handleSubmit}
+          className="space-y-10"
+        >
 
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
-            className="space-y-8"
-          >
-            <div>
-              <h2 className="text-2xl font-bold text-white light:text-black mb-6">
-                Contactinformatie
-              </h2>
-              <div className="space-y-4">
-                {contactInfo.map((info, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start gap-4 p-4 bg-white/5 light:bg-black/5 backdrop-blur-sm rounded-xl border-2 border-white/10 light:border-black/10 hover:border-[#ff4500] transition-all duration-300"
-                  >
-                    <div className="text-[#ff4500] mt-1 transition-transform duration-300 hover:scale-110">
-                      {info.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-white light:text-black font-semibold mb-1">
-                        {info.title}
-                      </h3>
-                      <a
-                        href={info.link}
-                        className="text-gray-300 light:text-gray-700 hover:text-[#ff4500] transition-colors duration-300"
-                      >
-                        {info.content}
-                      </a>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        </div>
+          {/* NAME */}
+          <div>
+            <p className="text-xs text-gray-500 mb-2">Your name</p>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="w-full text-lg bg-transparent border-b border-white/20 py-2 text-white focus:border-white outline-none transition"
+            />
+          </div>
+
+          {/* EMAIL */}
+          <div>
+            <p className="text-xs text-gray-500 mb-2">Your email</p>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="w-full text-lg bg-transparent border-b border-white/20 py-2 text-white focus:border-white outline-none transition"
+            />
+          </div>
+
+          {/* MESSAGE */}
+          <div>
+            <p className="text-xs text-gray-500 mb-2">Your message</p>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              rows={3}
+              className="w-full text-lg bg-transparent border-b border-white/20 py-2 text-white focus:border-white outline-none resize-none transition"
+            />
+          </div>
+
+          {/* SUBMIT */}
+          <div className="pt-4">
+            <button
+              type="submit"
+              className="text-white text-base hover:opacity-60 transition flex items-center gap-2"
+            >
+              Send message
+              <Send size={14} />
+            </button>
+          </div>
+
+        </form>
+
+
       </div>
     </div>
   );
