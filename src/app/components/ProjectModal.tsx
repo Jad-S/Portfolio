@@ -62,7 +62,7 @@
 //             animate={{ opacity: 1 }}
 //             exit={{ opacity: 0 }}
 //             onClick={onClose}
-//             className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
+//             className="fixed inset-0 bg-white/80 backdrop-blur-sm z-50"
 //           />
 
 //           {/* Modal */}
@@ -72,12 +72,12 @@
 //                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
 //                 animate={{ opacity: 1, scale: 1, y: 0 }}
 //                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
-//                 className="relative w-full max-w-4xl bg-black/95 backdrop-blur-lg rounded-2xl border-2 border-[#ff4500]/30 shadow-2xl shadow-[#ff4500]/20"
+//                 className="relative w-full max-w-4xl bg-white/95 backdrop-blur-lg rounded-2xl border-2 border-[#ff4500]/30 shadow-2xl shadow-[#ff4500]/20"
 //               >
 //                 {/* Close Button */}
 //                 <button
 //                   onClick={onClose}
-//                   className="absolute top-4 right-4 z-10 p-2 bg-[#ff4500] text-white rounded-full hover:bg-[#ff6a33] transition-all duration-300 hover:scale-110"
+//                   className="absolute top-4 right-4 z-10 p-2 bg-[#ff4500] text-black rounded-full hover:bg-[#ff6a33] transition-all duration-300 hover:scale-110"
 //                 >
 //                   <X size={24} />
 //                 </button>
@@ -86,7 +86,7 @@
 //                 <div className="p-8">
 //                   {/* Header */}
 //                   <div className="mb-6">
-//                     <h2 className="text-3xl font-bold text-white mb-3">{project.title}</h2>
+//                     <h2 className="text-3xl font-bold text-black mb-3">{project.title}</h2>
 //                     <div className="flex flex-wrap gap-2 mb-4">
 // {project.tags?.map((tag) => (
 //   <span
@@ -110,7 +110,7 @@
 
 //                   {/* Description (inklapbaar) */}
 //                   <div className="mb-6">
-//                     <h3 className="text-xl font-semibold text-white mb-3">Over Dit Project</h3>
+//                     <h3 className="text-xl font-semibold text-black mb-3">Over Dit Project</h3>
 //                     <p className="text-gray-300 leading-relaxed whitespace-pre-line">
 //                       {isExpanded ? fullText : fullText.slice(0, 300) + (fullText.length > 300 ? '...' : '')}
 //                     </p>
@@ -127,7 +127,7 @@
 //                   {/* Features */}
 //                   {project.features && (
 //                     <div className="mb-6">
-//                       <h3 className="text-xl font-semibold text-white mb-3">Belangrijkste Features</h3>
+//                       <h3 className="text-xl font-semibold text-black mb-3">Belangrijkste Features</h3>
 //                       <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
 //                         {project.features.map((feature, index) => (
 //                           <li key={index} className="flex items-start gap-2 text-gray-300">
@@ -142,7 +142,7 @@
 //                   {/* Screenshots */}
 //                   {project.screenshots && project.screenshots.length > 0 && (
 //                     <div className="mb-6">
-//                       <h3 className="text-xl font-semibold text-white mb-3">Screenshots</h3>
+//                       <h3 className="text-xl font-semibold text-black mb-3">Screenshots</h3>
 //                       <div className="grid grid-cols-2 gap-4">
 //                         {project.screenshots.map((screenshot, index) => (
 //                           <div
@@ -168,8 +168,8 @@
 //                       rel="noopener noreferrer"
 //                       className={`flex items-center gap-2 px-6 py-3 rounded-lg transition-all duration-300 ${
 //                         isArduino
-//                           ? 'bg-white/10 text-white opacity-50 cursor-not-allowed'
-//                           : 'bg-white/10 text-white hover:bg-white/20 hover:scale-105'
+//                           ? 'bg-white/10 text-black opacity-50 cursor-not-allowed'
+//                           : 'bg-white/10 text-black hover:bg-white/20 hover:scale-105'
 //                       }`}
 //                     >
 //                       <Github size={20} />
@@ -181,8 +181,8 @@
 //                       rel="noopener noreferrer"
 //                       className={`flex items-center gap-2 px-6 py-3 rounded-lg transition-all duration-300 ${
 //                         isArduino
-//                           ? 'bg-[#ff4500] text-white opacity-50 cursor-not-allowed'
-//                           : 'bg-[#ff4500] text-white hover:bg-[#ff6a33] hover:scale-105'
+//                           ? 'bg-[#ff4500] text-black opacity-50 cursor-not-allowed'
+//                           : 'bg-[#ff4500] text-black hover:bg-[#ff6a33] hover:scale-105'
 //                       }`}
 //                     >
 //                       <ExternalLink size={20} />

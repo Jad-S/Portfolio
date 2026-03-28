@@ -69,7 +69,7 @@ export function Projects() {
   return (
     <section className="py-32 px-6 max-w-6xl mx-auto">
       <div className="mb-24">
-        <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+        <h1 className="text-4xl sm:text-5xl font-bold text-black mb-4">
           <span className="text-[#ff4500]">Mijn Creaties</span>.
         </h1>
       </div>
@@ -83,7 +83,7 @@ export function Projects() {
             <div key={project.id}>
               <Link
                 to={`/project/${project.id}`}
-                className="group block -m-4 p-4 rounded-3xl hover:bg-white/5 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#ff4500]/30"
+                className="group block -m-4 p-4 rounded-3xl hover:bg-white/5 focus:ring-4 focus:ring-[#ff4500]/30"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                   <motion.div
@@ -93,13 +93,13 @@ export function Projects() {
                     className={isReversed ? "md:order-2" : ""}
                   >
                     <motion.h3
-                      className="text-4xl sm:text-5xl font-bold text-white mb-4 group-hover:text-[#ff4500] transition-all duration-500 cursor-pointer"
+                      className="text-4xl sm:text-5xl font-bold text-black mb-4 group-hover:text-[#ff4500] transition-all duration-500 cursor-pointer"
                       whileHover="hover"
                     >
                       <SplitText text={project.title} />
                     </motion.h3>
 
-                    <p className="text-gray-400 text-lg max-w-md">
+                    <p className="text-black-400 text-lg max-w-md">
                       {project.description}
                     </p>
                   </motion.div>
@@ -121,9 +121,9 @@ export function Projects() {
               </Link>
 
               {/* HR tussen projecten */}
-              {index !== projects.length - 1 && (
-                <hr className="border-white/10 my-16" />
-              )}
+{index !== projects.length - 1 && (
+  <hr className="border-t-1 border-black my-16" />
+)}
             </div>
           );
         })}

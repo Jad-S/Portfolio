@@ -66,32 +66,30 @@ export function ProjectDetails() {
   };
 
   const prevProject = () => {
-    const prev =
-      (projectIndex - 1 + totalProjects) % totalProjects;
+    const prev = (projectIndex - 1 + totalProjects) % totalProjects;
     window.location.href = `/project/${projects[prev].id}`;
   };
 
   const nextScreenshot = () => {
     setCurrentScreenshot((prev) =>
-      prev === project.screenshots.length - 1 ? 0 : prev + 1
+      prev === project.screenshots.length - 1 ? 0 : prev + 1,
     );
   };
 
   const prevScreenshot = () => {
     setCurrentScreenshot((prev) =>
-      prev === 0 ? project.screenshots.length - 1 : prev - 1
+      prev === 0 ? project.screenshots.length - 1 : prev - 1,
     );
   };
 
   useEffect(() => setCurrentScreenshot(0), [projectId]);
 
   return (
-    <div className="min-h-screen text-white px-6 lg:px-16 py-24">
-
+    <div className="min-h-screen text-black px-6 lg:px-16 py-24">
       {/* BACK */}
       <Link
         to="/"
-        className="text-sm uppercase tracking-widest text-gray-400 hover:text-white mb-16 inline-flex items-center gap-2"
+        className="text-sm uppercase tracking-widest text-black-400 hover:text-gray-600 mb-16 inline-flex items-center gap-2"
       >
         <ArrowLeft size={16} />
         Terug
@@ -99,11 +97,9 @@ export function ProjectDetails() {
 
       {/* MAIN LAYOUT */}
       <div className="grid lg:grid-cols-12 gap-16 items-start">
-
         {/* LEFT IMAGE */}
         <div className="lg:col-span-7">
           <div className="relative aspect-[16/10] rounded-2xl overflow-hidden group">
-
             <ImageWithFallback
               src={project.screenshots[currentScreenshot]}
               className="w-full h-full object-cover"
@@ -123,44 +119,41 @@ export function ProjectDetails() {
             >
               <ArrowRight size={26} />
             </button>
-
           </div>
         </div>
 
         {/* RIGHT TEXT */}
         <div className="lg:col-span-5 flex flex-col justify-between">
-
           <div>
-
             {/* TITLE */}
-<motion.h1
-  className="text-[#ff4500] font-light mb-8 cursor-pointer leading-tight"
-  style={{
-    fontSize: "clamp(2rem, 3.5vw, 4.5rem)",
-    maxWidth: "100%",
-  }}
-  whileHover="hover"
->
-  {project.title}<span className="text-white">.</span>
-</motion.h1>
+            <motion.h1
+              className="text-[#ff4500] font-light mb-8 cursor-pointer leading-tight"
+              style={{
+                fontSize: "clamp(2rem, 3.5vw, 4.5rem)",
+                maxWidth: "100%",
+              }}
+              whileHover="hover"
+            >
+              {project.title}
+              <span className="text-black">.</span>
+            </motion.h1>
 
-            <p className="text-gray-300 text-lg leading-relaxed max-w-lg mb-6 whitespace-pre-line">
+            <p className="text-black-600 text-lg leading-relaxed max-w-lg mb-6 whitespace-pre-line">
               {project.about}
             </p>
 
-            <p className="text-gray-400 text-base leading-relaxed max-w-lg">
-              Dit project was een belangrijk onderdeel van mijn ontwikkeling als developer.
-              Ik heb hier gewerkt met moderne technologieën, API-integraties en component-based development.
-
-              Tijdens het bouwen heb ik aandacht besteed aan performance, UX en schaalbaarheid.
-              Daarnaast heb ik geleerd hoe je een project van begin tot eind structureert en onderhoudt.
+            <p className="text-black-400 text-base leading-relaxed max-w-lg">
+              Dit project was een belangrijk onderdeel van mijn ontwikkeling als
+              developer. Ik heb hier gewerkt met moderne technologieën,
+              API-integraties en component-based development. Tijdens het bouwen
+              heb ik aandacht besteed aan performance, UX en schaalbaarheid.
+              Daarnaast heb ik geleerd hoe je een project van begin tot eind
+              structureert en onderhoudt.
             </p>
-
           </div>
 
           {/* BUTTONS + NAV */}
           <div className="mt-16 flex flex-col gap-8">
-
             {/* LAUNCH */}
             <div className="flex gap-6 flex-wrap">
               {project.links.live && (
@@ -189,34 +182,29 @@ export function ProjectDetails() {
             {/* CENTERED NAV (COUNTER + ARROWS) */}
             <div className="flex justify-center mt-6">
               <div className="flex items-center gap-10">
-
                 {/* COUNTER */}
-                <span className="text-sm tracking-widest text-gray-400">
+                <span className="text-sm tracking-widest text-black-400">
                   {projectIndex + 1} / {totalProjects}
                 </span>
 
                 {/* ARROWS */}
                 <div className="flex items-center gap-6">
-
                   <button onClick={prevProject} className="group">
                     <ArrowLeftCircle
                       size={32}
-                      className="text-gray-400 group-hover:text-[#ff4500] transition duration-300"
+                      className="text-black-400 group-hover:text-[#ff4500] transition duration-300"
                     />
                   </button>
 
                   <button onClick={nextProject} className="group">
                     <ArrowRightCircle
                       size={32}
-                      className="text-gray-400 group-hover:text-[#ff4500] transition duration-300"
+                      className="text-black-400 group-hover:text-[#ff4500] transition duration-300"
                     />
                   </button>
-
                 </div>
-
               </div>
             </div>
-
           </div>
         </div>
       </div>

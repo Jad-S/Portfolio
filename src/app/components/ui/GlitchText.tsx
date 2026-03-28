@@ -22,7 +22,7 @@
 //   }, []);
 
 // return (
-//   <h1 className="text-5xl sm:text-7xl font-bold text-white mb-6">
+//   <h1 className="text-5xl sm:text-7xl font-bold text-black mb-6">
 //     {word.split("").map((char, index) => {
 //       const isGlitched = glitchedIndices.includes(index);
 

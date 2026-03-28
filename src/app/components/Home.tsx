@@ -4,7 +4,7 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { TypewriterText } from "./TypewriterText";
 import { Projects } from "./Projects";
 
-import jadImage from "./figma/Jad.jpg";
+import jadImage from "./ui/PersonalFoto.png";
 
 export function Home() {
   return (
@@ -13,52 +13,55 @@ export function Home() {
       <section className="min-h-[90vh] flex items-center justify-center px-4 py-20">
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            
             {/* LEFT */}
             <motion.div
               className="lg:ml-16"
-
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
               <motion.h1
-                className="text-5xl sm:text-7xl font-bold text-white mb-6"
+                className="text-5xl sm:text-7xl font-bold text-black mb-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-              <span className="block text-white mt-2 text-l">
-                Hi, mijn
-                <span className="block mt-6 font-bold">
-                  naam is <span className="text-[#ff4500]">Jad</span>.
+                <span className="block text-black mt-2 text-l">
+                  Hi, mijn
+                  <span className="block mt-6 font-bold">
+                    naam is <span className="text-[#ff4500]">Jad</span>.
+                  </span>
                 </span>
-              </span>
               </motion.h1>
-<br />
+              <br />
 
-<h1 className="text-xl text-gray-300 mb-8">
-  Ik ben een <span className="font-bold text-[#ff4500]">derdejaarsstudent software developer</span>, woonachtig in Enschede, Nederland.
-</h1>
+              <h1 className="text-xl text-black-600 mb-8">
+                Ik ben een{" "}
+                <span className="font-bold text-[#ff4500]">
+                  derdejaarsstudent software developer
+                </span>
+                , woonachtig in Enschede, Nederland.
+              </h1>
               <motion.div
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ delay: 0.8 }}
-  className="mt-6 text-gray-400 text-sm"
->
-  <Link to="/about" className="hover:text-white transition-colors">
-    Ontdek Meer...
-  </Link>
-</motion.div>
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+                className="mt-6 text-black-400 text-sm"
+              >
+                <Link
+                  to="/about"
+                  className="hover:text-gray-600 transition-colors"
+                >
+                  Ontdek Meer...
+                </Link>
+              </motion.div>
 
               <motion.div
                 className="flex flex-col sm:flex-row gap-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-              >
-
-              </motion.div>
+              ></motion.div>
             </motion.div>
 
             {/* RIGHT IMAGE */}
@@ -68,69 +71,47 @@ export function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <div className="relative w-full aspect-square max-w-md mx-auto">
-                
-                {/* Animated Border */}
-                <motion.div
-                  className="absolute inset-0 rounded-full bg-gradient-to-r from-[#ff4500] via-orange-600 to-[#ff4500]"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                />
+<div className="w-full max-w-md mx-auto">
+                  {/* Animated Border */}
+<motion.div
+  className="absolute inset-0"
+  animate={{ rotate: 360 }}
+  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+/>
 
                 {/* Image */}
-                <div className="absolute inset-2 rounded-full overflow-hidden border-4 border-black">
-                  <ImageWithFallback
+<div>
+                    <ImageWithFallback
                     src={jadImage}
                     alt="Developer Portrait"
                     className="w-full h-full object-cover"
                   />
-                </div>
-
-                {/* Floating Labels */}
-                <motion.div
-                  className="absolute -top-4 -right-4 bg-[#ff4500] text-white px-6 py-3 rounded-full shadow-lg"
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                >
-                  <span className="font-bold">Frontend</span>
-                </motion.div>
-
-                <motion.div
-                  className="absolute -bottom-4 -left-4 bg-white text-black px-6 py-3 rounded-full shadow-lg border-2 border-[#ff4500]"
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
-                >
-                  <span className="font-bold">Backend</span>
-                </motion.div>
-
+                </div>                
               </div>
             </motion.div>
           </div>
         </div>
       </section>
-      <br /><br />
 
-        <div className="flex flex-col items-center">
-    <div className="text-gray-400 text-sm mb-2 -ml-165">S  C  R  O L  L</div>
+      <div className="flex flex-col items-center">
+        <div className="text-black-400 text-sm mb-2 -ml-165">S C R O L L</div>
 
-    {/* Lijn */}
-    <div className="w-[2px] h-79 bg-gray-500 -ml-170"></div>
-  </div>
-<br /><br /><br />
-<div className="flex flex-col items-end gap-12 mr-80 -mb-90">
+        {/* Lijn */}
+        <div className="w-[2px] h-79 bg-gray-500 -ml-170"></div>
+      </div>
+      {/* <div className="flex flex-col items-end gap-12 mr-80 -mb-90">
+        <div className="h-[2px] w-70 bg-[#ff4500]"></div>
+
+        <div className="h-[2px] w-70 bg-black"></div>
+
+        <div className="h-[2px] w-70 bg-[#ff4500]"></div>
+
+        <div className="h-[2px] w-70 bg-black"></div>
+      </div> */}
+      <br />
+      <br />
 
   
-  <div className="h-[2px] w-70 bg-[#ff4500]"></div>
-
-  <div className="h-[2px] w-70 bg-white"></div>
-
-  <div className="h-[2px] w-70 bg-[#ff4500]"></div>
-
-  <div className="h-[2px] w-70 bg-white"></div>
-
-</div>
-<br /><br /><br />
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
       {/* PROJECTS SECTION */}
       <section id="projects">

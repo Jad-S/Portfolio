@@ -1,6 +1,6 @@
-import { Link, useLocation } from 'react-router';
-import { motion, AnimatePresence } from 'motion/react';
-import { useState } from 'react';
+import { Link, useLocation } from "react-router";
+import { motion, AnimatePresence } from "motion/react";
+import { useState } from "react";
 import logo from "./figma/Logo12.png";
 
 export function Navigation() {
@@ -8,22 +8,20 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   const links = [
-    { path: '/', label: 'Home' },
-    { path: '/about', label: 'Auteur' },
-    { path: '/contact', label: 'Hire me' },
+    { path: "/", label: "Home" },
+    { path: "/about", label: "Auteur" },
+    { path: "/contact", label: "Hire me" },
   ];
 
   const isActive = (path: string) => {
-    if (path === '/') return location.pathname === path;
+    if (path === "/") return location.pathname === path;
     return location.pathname.startsWith(path);
   };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent py-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         <div className="flex items-center justify-between h-16">
-
           {/* LOGO */}
           <Link to="/" className="group relative -ml-20">
             <motion.div
@@ -58,7 +56,6 @@ export function Navigation() {
 
           {/* LINKS + HAMBURGER */}
           <div className="flex items-center gap-4">
-
             <AnimatePresence>
               {isOpen && (
                 <motion.div
@@ -75,11 +72,11 @@ export function Navigation() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
                     >
-                      {link.path.startsWith('#') ? (
+                      {link.path.startsWith("#") ? (
                         <a
                           href={link.path}
                           onClick={() => setIsOpen(false)}
-                          className="text-white hover:text-[#ff4500] transition"
+                          className="text-black hover:text-[#ff4500] transition"
                         >
                           {link.label}
                         </a>
@@ -87,8 +84,8 @@ export function Navigation() {
                         <Link
                           to={link.path}
                           onClick={() => setIsOpen(false)}
-                          className={`text-white hover:text-[#ff4500] transition ${
-                            isActive(link.path) ? 'text-[#ff4500]' : ''
+                          className={`text-black hover:text-[#ff4500] transition ${
+                            isActive(link.path) ? "text-[#ff4500]" : ""
                           }`}
                         >
                           {link.label}
@@ -109,21 +106,19 @@ export function Navigation() {
               whileTap={{ scale: 0.9 }}
             >
               <motion.span
-                className="w-6 h-[3px] bg-[#ff4500] rounded shadow-[0_0_8px_#ff4500]"
+                className="w-6 h-[3px] bg-[#ff4500] rounded"
                 animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
               />
               <motion.span
-                className="w-6 h-[3px] bg-[#ff4500] rounded shadow-[0_0_8px_#ff4500]"
+                className="w-6 h-[3px] bg-[#ff4500] rounded"
                 animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
               />
               <motion.span
-                className="w-6 h-[3px] bg-[#ff4500] rounded shadow-[0_0_8px_#ff4500]"
+                className="w-6 h-[3px] bg-[#ff4500] rounded"
                 animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
               />
             </motion.button>
-
           </div>
-
         </div>
       </div>
     </nav>
