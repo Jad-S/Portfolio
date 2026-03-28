@@ -42,6 +42,7 @@ export function Projects() {
       <span className="inline-block">
         {letters.map((char, i) => {
           const offset = i - middle;
+
           return (
             <motion.span
               key={i}
@@ -72,47 +73,58 @@ export function Projects() {
           <span className="text-[#ff4500]">Mijn Creaties</span>.
         </h1>
       </div>
-      
-      <div className="flex flex-col gap-32">
+
+      <div className="flex flex-col">
         {projects.map((project, index) => {
           const isReversed = index % 2 === 1;
           const Icon = project.icon;
 
           return (
-            <Link
-              key={project.id}
-              to={`/project/${project.id}`}
-              className="group block -m-4 p-4 rounded-3xl hover:bg-white/5 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#ff4500]/30"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <motion.div
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  className={isReversed ? "md:order-2" : ""}
-                >
-                  <motion.h3
-                    className="text-4xl sm:text-5xl font-bold text-white mb-4 group-hover:text-[#ff4500] transition-all duration-500 cursor-pointer"
-                    whileHover="hover"
-                  >
-                    <SplitText text={project.title} />
-                  </motion.h3>
-                  <p className="text-gray-400 text-lg max-w-md">
-                    {project.description}
-                  </p>
-                </motion.div>
-
-                <div className={`flex justify-center ${isReversed ? "md:order-1" : ""}`}>
+            <div key={project.id}>
+              <Link
+                to={`/project/${project.id}`}
+                className="group block -m-4 p-4 rounded-3xl hover:bg-white/5 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#ff4500]/30"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                   <motion.div
-                    whileHover={{ scale: 1.1, rotate: 3 }}
-                    transition={{ type: "spring", stiffness: 200 }}
-                    className="w-40 h-40 rounded-2xl border border-white/10 flex items-center justify-center text-[#ff4500] shadow-lg shadow-[#ff4500]/10 group-hover:shadow-[#ff4500]/25 transition-all duration-300"
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className={isReversed ? "md:order-2" : ""}
                   >
-                    <Icon size={80} />
+                    <motion.h3
+                      className="text-4xl sm:text-5xl font-bold text-white mb-4 group-hover:text-[#ff4500] transition-all duration-500 cursor-pointer"
+                      whileHover="hover"
+                    >
+                      <SplitText text={project.title} />
+                    </motion.h3>
+
+                    <p className="text-gray-400 text-lg max-w-md">
+                      {project.description}
+                    </p>
                   </motion.div>
+
+                  <div
+                    className={`flex justify-center ${
+                      isReversed ? "md:order-1" : ""
+                    }`}
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 3 }}
+                      transition={{ type: "spring", stiffness: 200 }}
+                      className="w-40 h-40 rounded-2xl border border-white/10 flex items-center justify-center text-[#ff4500] shadow-lg shadow-[#ff4500]/10 group-hover:shadow-[#ff4500]/25 transition-all duration-300"
+                    >
+                      <Icon size={80} />
+                    </motion.div>
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+
+              {/* HR tussen projecten */}
+              {index !== projects.length - 1 && (
+                <hr className="border-white/10 my-16" />
+              )}
+            </div>
           );
         })}
       </div>

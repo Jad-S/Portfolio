@@ -16,6 +16,8 @@ export function Home() {
             
             {/* LEFT */}
             <motion.div
+              className="lg:ml-16"
+
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
@@ -26,16 +28,28 @@ export function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                <span className="block text-[#ff4500] mt-2">
-                  Web Developer
+              <span className="block text-white mt-2 text-l">
+                Hi, mijn
+                <span className="block mt-6 font-bold">
+                  naam is <span className="text-[#ff4500]">Jad</span>.
                 </span>
+              </span>
               </motion.h1>
+<br />
 
-              <TypewriterText
-                text="Hi, ik ben Jad Saloum. Een derdejaarsstudent software developer, woonachtig in Enschede, Nederland, en werkzaam aan full-stack projecten."
-                className="text-xl text-gray-300 mb-8"
-                delay={0.4}
-              />
+<h1 className="text-xl text-gray-300 mb-8">
+  Ik ben een <span className="font-bold text-[#ff4500]">derdejaarsstudent software developer</span>, woonachtig in Enschede, Nederland.
+</h1>
+              <motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.8 }}
+  className="mt-6 text-gray-400 text-sm"
+>
+  <Link to="/about" className="hover:text-white transition-colors">
+    Ontdek Meer...
+  </Link>
+</motion.div>
 
               <motion.div
                 className="flex flex-col sm:flex-row gap-4"
@@ -43,13 +57,6 @@ export function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
               >
-                <Link
-                  to="/about"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-[#ff4500] text-white rounded-lg hover:bg-[#ff6a33] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#ff4500]/50"
-                >
-                  Huur mij in...
-                  
-                </Link>
 
               </motion.div>
             </motion.div>
@@ -101,6 +108,7 @@ export function Home() {
           </div>
         </div>
       </section>
+      <br /><br />
 
         <div className="flex flex-col items-center">
     <div className="text-gray-400 text-sm mb-2 -ml-165">S  C  R  O L  L</div>

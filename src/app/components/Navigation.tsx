@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router';
 import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
+import logo from "./figma/Logo12.png";
 
 export function Navigation() {
   const location = useLocation();
@@ -13,54 +14,38 @@ export function Navigation() {
   ];
 
   const isActive = (path: string) => {
-    if (path.startsWith('#')) return false; // anchors geen active state
     if (path === '/') return location.pathname === path;
     return location.pathname.startsWith(path);
   };
 
-  const playSound = () => {
-    const audio = new Audio('https://www.soundjay.com/misc/sounds/page-flip-02.mp3');
-    audio.volume = 0.25;
-    audio.play();
-  };
-
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-lg border-b border-[#ff4500]/20">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent py-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="flex items-center justify-between h-16">
 
           {/* LOGO */}
-          <Link to="/" className="group relative">
+          <Link to="/" className="group relative -ml-20">
             <motion.div
               className="flex items-center"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
-              <span className="text-2xl font-bold text-white relative">
-                <motion.span
-                  className="inline-block"
-                  animate={{ 
-                    textShadow: [
-                      "0 0 10px #ff4500",
-                      "0 0 20px #ff4500",
-                      "0 0 10px #ff4500"
-                    ]
-                  }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  Jad S
-                </motion.span>
-                
-                <motion.span 
-                  className="text-[#ff4500]"
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                  style={{ display: "inline-block" }}
-                >
-                  .
-                </motion.span>
-              </span>
+              <motion.div
+                className="relative flex items-center"
+                whileHover={{ scale: 1.08 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                {/* SUBTIELE GLOW */}
+                <div className="absolute inset-0 blur-lg opacity-0 bg-[#ff4500] rounded-full scale-125 transition duration-300" />
+
+                {/* LOGO */}
+                <img
+                  src={logo}
+                  alt="Logo"
+                  className="h-22 w-auto object-contain"
+                />
+              </motion.div>
 
               <motion.div
                 className="absolute -inset-2 bg-gradient-to-r from-[#ff4500]/0 via-[#ff4500]/20 to-[#ff4500]/0 rounded-lg opacity-0 group-hover:opacity-100 blur-xl"
@@ -119,7 +104,6 @@ export function Navigation() {
             <motion.button
               onClick={() => {
                 setIsOpen(!isOpen);
-                playSound();
               }}
               className="w-10 h-10 flex flex-col justify-center items-center gap-1.5"
               whileTap={{ scale: 0.9 }}
