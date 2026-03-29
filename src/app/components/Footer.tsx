@@ -82,7 +82,6 @@ export function Footer() {
                 icon: <Linkedin size={24} />,
                 link: "https://www.linkedin.com/in/jad-s-365b00344/",
               },
-              { icon: <Twitter size={24} />, link: "https://twitter.com" },
               { icon: <Mail size={24} />, link: "/contact" },
             ].map((item, i) => (
               <a

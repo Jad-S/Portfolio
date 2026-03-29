@@ -77,3 +77,12 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #ff6a33; /* iets lichter/oranje bij hover */
 }
+
+/* hide scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

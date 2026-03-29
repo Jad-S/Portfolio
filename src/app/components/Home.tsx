@@ -94,10 +94,10 @@ export function Home() {
       </section>
 
       <div className="flex flex-col items-center">
-        <div className="text-black-400 text-sm mb-2 -ml-165">S C R O L L</div>
+        <div className="text-[#ff4450] text-sm mb-2 -ml-165">S C R O L L</div>
 
         {/* Lijn */}
-        <div className="w-[2px] h-79 bg-gray-500 -ml-170"></div>
+        <div className="w-[2px] h-79 bg-[#ff4450] -ml-170"></div>
       </div>
       {/* <div className="flex flex-col items-end gap-12 mr-80 -mb-90">
         <div className="h-[2px] w-70 bg-[#ff4500]"></div>

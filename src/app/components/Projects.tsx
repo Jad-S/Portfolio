@@ -18,20 +18,20 @@ export function Projects() {
         "In dit project heb ik een full-stack webapplicatie gebouwd met React en .NET, waarin ik de Top2000 van NPO Radio 2 heb nagebouwd. Ik heb gewerkt met API-integratie, filtering en zoekfunctionaliteit, en heb ervoor gezorgd dat de UI volledig responsive is.",
       icon: Code,
     },
-    {
-      id: 2,
-      title: "Dierentuin Website",
-      description:
-        "Voor dit project heb ik een CRUD webapplicatie ontwikkeld met Razor Pages en een SQL database. Ik heb een systeem gebouwd waarmee dieren kunnen worden toegevoegd, aangepast en verwijderd.",
-      icon: Database,
-    },
-    {
-      id: 3,
-      title: "Arduino Systeem",
-      description:
-        "In dit project heb ik een beveiligingssysteem gebouwd met een RFID-module en Arduino. Het systeem leest tags en geeft toegang op basis van de juiste kaart.",
-      icon: Cpu,
-    },
+    // {
+    //   id: 2,
+    //   title: "Dierentuin Website",
+    //   description:
+    //     "Voor dit project heb ik een CRUD webapplicatie ontwikkeld met Razor Pages en een SQL database. Ik heb een systeem gebouwd waarmee dieren kunnen worden toegevoegd, aangepast en verwijderd.",
+    //   icon: Database,
+    // },
+    // {
+    //   id: 3,
+    //   title: "Arduino Systeem",
+    //   description:
+    //     "In dit project heb ik een beveiligingssysteem gebouwd met een RFID-module en Arduino. Het systeem leest tags en geeft toegang op basis van de juiste kaart.",
+    //   icon: Cpu,
+    // },
   ];
 
   const SplitText = ({ text }: { text: string }) => {

@@ -1,53 +1,17 @@
 import { motion } from "motion/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useParams } from "react-router";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import RoughBorder from "./RoughBorder";
 import {
   ArrowLeft,
   ArrowLeftCircle,
   ArrowRightCircle,
-  ArrowRight,
   Play,
   Github,
 } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { projects } from "./projectsData";
-
-// /* SPLIT TEXT (FIXED - NO WRAPPING BUG) */
-// type SplitTextProps = {
-//   text: string;
-// };
-
-// const SplitText = ({ text }: SplitTextProps) => {
-//   const letters = text.split("");
-//   const middle = letters.length / 2;
-
-//   return (
-//     <span className="inline-flex whitespace-nowrap">
-//       {letters.map((char, i) => {
-//         const offset = i - middle;
-
-//         return (
-//           <motion.span
-//             key={i}
-//             className="inline-block"
-//             variants={{
-//               hover: {
-//                 x: offset * 3,
-//               },
-//             }}
-//             transition={{
-//               type: "spring",
-//               stiffness: 200,
-//               damping: 15,
-//             }}
-//           >
-//             {char === " " ? "\u00A0" : char}
-//           </motion.span>
-//         );
-//       })}
-//     </span>
-//   );
-// };
 
 export function ProjectDetails() {
   const params = useParams();
@@ -57,6 +21,8 @@ export function ProjectDetails() {
   const project = projects[projectIndex] || projects[0];
 
   const [currentScreenshot, setCurrentScreenshot] = useState(0);
+
+  const thumbnailRef = useRef<HTMLDivElement>(null);
 
   const totalProjects = projects.length;
 
@@ -82,7 +48,23 @@ export function ProjectDetails() {
     );
   };
 
+  // Reset bij project switch
   useEffect(() => setCurrentScreenshot(0), [projectId]);
+
+  // Scroll thumbnails mee (nice UX 🔥)
+  useEffect(() => {
+    const container = thumbnailRef.current;
+    if (!container) return;
+
+    const activeThumb = container.children[currentScreenshot] as HTMLElement;
+    if (activeThumb) {
+      activeThumb.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
+      });
+    }
+  }, [currentScreenshot]);
 
   return (
     <div className="min-h-screen text-black px-6 lg:px-16 py-24">
@@ -99,27 +81,65 @@ export function ProjectDetails() {
       <div className="grid lg:grid-cols-12 gap-16 items-start">
         {/* LEFT IMAGE */}
         <div className="lg:col-span-7">
+          {/* MAIN IMAGE */}
           <div className="relative aspect-[16/10] rounded-2xl overflow-hidden group">
             <ImageWithFallback
               src={project.screenshots[currentScreenshot]}
               className="w-full h-full object-cover"
             />
-
-            {/* SLIDER ARROWS */}
-            <button
-              onClick={prevScreenshot}
-              className="absolute left-0 top-0 h-full w-16 flex items-center justify-center opacity-30 group-hover:opacity-100 transition"
-            >
-              <ArrowLeft size={26} />
-            </button>
-
-            <button
-              onClick={nextScreenshot}
-              className="absolute right-0 top-0 h-full w-16 flex items-center justify-center opacity-30 group-hover:opacity-100 transition"
-            >
-              <ArrowRight size={26} />
-            </button>
           </div>
+
+<div className="mt-6 flex items-center gap-2">
+  
+<div className="relative w-6 h-[80px] flex items-center justify-center">
+  <RoughBorder width={24} height={80} />
+  <button
+    onClick={prevScreenshot}
+    className="absolute inset-0 w-full h-full flex items-center justify-center
+                 text-neutral-800"
+  >
+    <ChevronLeft size={18} />
+  </button>
+</div>
+
+
+
+  {/* THUMBNAILS */}
+  <div
+    ref={thumbnailRef}
+    className="flex gap-3 overflow-x-auto scrollbar-hide"
+  >
+    {project.screenshots.map((img, index) => (
+      <button
+        key={index}
+        onClick={() => setCurrentScreenshot(index)}
+        className={`min-w-[110px] h-[80px] rounded-lg overflow-hidden border transition duration-300
+          ${
+            currentScreenshot === index
+              ? "border-[#ff4500] scale-105"
+              : "border-transparent opacity-60 hover:opacity-100"
+          }`}
+      >
+        <ImageWithFallback
+          src={img}
+          className="w-full h-full object-cover"
+        />
+      </button>
+    ))}
+  </div>
+
+  <div className="relative w-6 h-[80px] flex items-center justify-center">
+    <RoughBorder width={24} height={80} />
+    <button
+      onClick={nextScreenshot}
+      className="absolute inset-0 w-full h-full flex items-center justify-center
+                 text-neutral-800"
+    >
+      <ChevronRight size={18} />
+    </button>
+  </div>
+
+</div>
         </div>
 
         {/* RIGHT TEXT */}
@@ -132,7 +152,6 @@ export function ProjectDetails() {
                 fontSize: "clamp(2rem, 3.5vw, 4.5rem)",
                 maxWidth: "100%",
               }}
-              whileHover="hover"
             >
               {project.title}
               <span className="text-black">.</span>
@@ -145,22 +164,19 @@ export function ProjectDetails() {
             <p className="text-black-400 text-base leading-relaxed max-w-lg">
               Dit project was een belangrijk onderdeel van mijn ontwikkeling als
               developer. Ik heb hier gewerkt met moderne technologieën,
-              API-integraties en component-based development. Tijdens het bouwen
-              heb ik aandacht besteed aan performance, UX en schaalbaarheid.
-              Daarnaast heb ik geleerd hoe je een project van begin tot eind
-              structureert en onderhoudt.
+              API-integraties en component-based development.
             </p>
           </div>
 
           {/* BUTTONS + NAV */}
           <div className="mt-16 flex flex-col gap-8">
-            {/* LAUNCH */}
+            {/* LINKS */}
             <div className="flex gap-6 flex-wrap">
               {project.links.live && (
                 <a
                   href={project.links.live}
                   target="_blank"
-                  className="inline-flex items-center gap-2 text-sm uppercase tracking-widest border-b border-white/30 hover:border-[#ff4500] transition"
+                  className="inline-flex items-center gap-2 text-sm uppercase tracking-widest border-b border-black/30 hover:border-[#ff4500] transition"
                 >
                   <Play size={16} />
                   Launch
@@ -171,7 +187,7 @@ export function ProjectDetails() {
                 <a
                   href={project.links.github}
                   target="_blank"
-                  className="inline-flex items-center gap-2 text-sm uppercase tracking-widest border-b border-white/30 hover:border-[#ff4500] transition"
+                  className="inline-flex items-center gap-2 text-sm uppercase tracking-widest border-b border-black/30 hover:border-[#ff4500] transition"
                 >
                   <Github size={16} />
                   Code
@@ -179,27 +195,25 @@ export function ProjectDetails() {
               )}
             </div>
 
-            {/* CENTERED NAV (COUNTER + ARROWS) */}
+            {/* NAV */}
             <div className="flex justify-center mt-6">
               <div className="flex items-center gap-10">
-                {/* COUNTER */}
                 <span className="text-sm tracking-widest text-black-400">
                   {projectIndex + 1} / {totalProjects}
                 </span>
 
-                {/* ARROWS */}
                 <div className="flex items-center gap-6">
                   <button onClick={prevProject} className="group">
                     <ArrowLeftCircle
                       size={32}
-                      className="text-black-400 group-hover:text-[#ff4500] transition duration-300"
+                      className="text-black-400 group-hover:text-[#ff4500] transition"
                     />
                   </button>
 
                   <button onClick={nextProject} className="group">
                     <ArrowRightCircle
                       size={32}
-                      className="text-black-400 group-hover:text-[#ff4500] transition duration-300"
+                      className="text-black-400 group-hover:text-[#ff4500] transition"
                     />
                   </button>
                 </div>
