@@ -21,39 +21,40 @@ export function Home() {
               transition={{ duration: 0.8 }}
             >
               <motion.h1
-                className="text-5xl sm:text-7xl font-bold text-black mb-6"
+                className="text-5xl sm:text-7xl font-bold text-black mb-3"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
                 <span className="block text-black mt-2 text-l">
-                  Hi, mijn
+                  Hi, my name
                   <span className="block mt-6 font-bold">
-                    naam is <span className="text-[#ff4500]">Jad</span>.
+                    is<span className="text-[#ff4500]"> Jad</span>.
                   </span>
                 </span>
               </motion.h1>
               <br />
 
               <h1 className="text-xl text-black-600 mb-8">
-                Ik ben een{" "}
+                I am 20 years old and a{" "}
                 <span className="font-bold text-[#ff4500]">
-                  derdejaarsstudent software developer
+                  third-year software development student
                 </span>
-                , woonachtig in Enschede, Nederland.
+                , based in Enschede, the Netherlands.
               </h1>
+
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8 }}
                 className="mt-6 text-black-400 text-sm"
               >
-                <Link
-                  to="/about"
-                  className="hover:text-gray-600 transition-colors"
-                >
-                  Ontdek Meer...
-                </Link>
+<Link
+  to="/about"
+  className="text-lg hover:text-gray-600 transition-colors"
+>
+  Learn More...
+</Link>
               </motion.div>
 
               <motion.div
@@ -71,22 +72,22 @@ export function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-<div className="w-full max-w-md mx-auto">
-                  {/* Animated Border */}
-<motion.div
-  className="absolute inset-0"
-  animate={{ rotate: 360 }}
-  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-/>
+              <div className="w-full max-w-md mx-auto">
+                {/* Animated Border */}
+                <motion.div
+                  className="absolute inset-0"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                />
 
                 {/* Image */}
-<div>
-                    <ImageWithFallback
+                <div>
+                  <ImageWithFallback
                     src={jadImage}
                     alt="Developer Portrait"
                     className="w-full h-full object-cover"
                   />
-                </div>                
+                </div>
               </div>
             </motion.div>
           </div>
@@ -94,24 +95,11 @@ export function Home() {
       </section>
 
       <div className="flex flex-col items-center">
-        <div className="text-[#ff4450] text-sm mb-2 -ml-165">S C R O L L</div>
-
-        {/* Lijn */}
-        <div className="w-[2px] h-79 bg-[#ff4450] -ml-170"></div>
+        <div className="text-[#ff4500] text-sm -ml-165">S C R O L L</div>
+<br />
+        {/* Line */}
+        <div className="w-[2px] h-79 bg-[#ff4500] -ml-170"></div>
       </div>
-      {/* <div className="flex flex-col items-end gap-12 mr-80 -mb-90">
-        <div className="h-[2px] w-70 bg-[#ff4500]"></div>
-
-        <div className="h-[2px] w-70 bg-black"></div>
-
-        <div className="h-[2px] w-70 bg-[#ff4500]"></div>
-
-        <div className="h-[2px] w-70 bg-black"></div>
-      </div> */}
-      <br />
-      <br />
-
-  
 
       {/* PROJECTS SECTION */}
       <section id="projects">

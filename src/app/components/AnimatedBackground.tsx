@@ -4,9 +4,9 @@ export function AnimatedBackground() {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden transition-colors duration-300">
       {/* Background */}
-      <div className="absolute inset-0 bg-white dark:bg-white transition-colors duration-300" />
+      <div className="absolute inset-0 bg-gray-100 dark:bg-gray-900 transition-colors duration-300" />
 
-      {/* Soft Orbs (neutraal gemaakt i.p.v. oranje) */}
+      {/* Soft Orbs */}
       <motion.div
         className="absolute top-1/4 left-1/4 w-96 h-96 bg-gray-400/20 dark:bg-gray-200/10 rounded-full blur-3xl"
         animate={{
@@ -49,8 +49,8 @@ export function AnimatedBackground() {
         }}
       />
 
-      {/* Grid Pattern (ook neutraal gemaakt) */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
+      {/* Grid Pattern (overal gelijk, geen fade) */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:100px_100px]" />
     </div>
   );
 }

@@ -45,130 +45,81 @@ export function About() {
     },
   };
 
-  // const values = [
-  //   {
-  //     icon: <Code2 size={32} />,
-  //     title: "Backend Developer",
-  //     description:
-  //       "Ik ben wel full-stack developer, maar mijn voorkeur gaat meestal uit naar de backend.",
-  //   },
-  //   {
-  //     icon: <Palette size={32} />,
-  //     title: "Designer",
-  //     description:
-  //       "Designen vind ik heel leuk omdat ik veel van stijl hou en het belangrijk vind dat functionaliteit en een strak, stijlvol design goed samenkomen.",
-  //   },
-  //   {
-  //     icon: <Database size={32} />,
-  //     title: "Databases",
-  //     description:
-  //       "Ik werk graag met databases omdat ik het belangrijk vind dat data logisch is opgebouwd en goed aansluit op de backend.",
-  //   },
-  //   {
-  //     icon: <CodeIcon size={32} />,
-  //     title: "Frontend Developer",
-  //     description:
-  //       "Ik kan goed overweg met HTML, CSS en Javascript,.React is nog lastig, maar ben nog aan het oefenen",
-  //   },
-  // ];
-
   const fullText = (
     <>
-      Ik ben een <span className="text-[#ff4500]">designer</span>,{" "}
-      <span className="text-[#ff4500]">Frontend</span> en{" "}
+      I am a <span className="text-[#ff4500]">designer</span>,{" "}
+      <span className="text-[#ff4500]">Frontend</span> and{" "}
       <span className="text-[#ff4500]">Backend</span>{" "}
-      <span className="text-[#ff4500]">developer</span> die nog volop aan het
-      groeien is<span className="text-[#ff4500]">...</span>
+      <span className="text-[#ff4500]">developer</span> who is still growing<span className="text-[#ff4500]">...</span>
       <br />
-      {/* <br /><br />
-      Hieronder lees je meer over mijn <span className="text-[#ff4500]">achtergrond</span> en <span className="text-[#ff4500]">privéleven</span>...  */}
       <br />
-      Ik kan goed overweg met <span className="text-[#ff4500]">HTML</span>,{" "}
+      I can work well with <span className="text-[#ff4500]">HTML</span>,{" "}
       <span className="text-[#ff4500]">CSS</span>,{" "}
-      <span className="text-[#ff4500]">Javascript</span> en{" "}
-      <span className="text-[#ff4500]">C#</span>. Ook ben ik goed in opzetten
-      van databases. Ik vind het leuk om aan frontend en backend te werken, maar
-      mijn voorkeur gaat meestal naar backend, daarnaast vind ik het heel leuk
-      om dingen te bouwen van A tot Z. Ik let daarbij niet alleen op dat iets
-      werkt, maar ook op hoe het eruitziet.
+      <span className="text-[#ff4500]">Javascript</span> and{" "}
+      <span className="text-[#ff4500]">C#</span>. I am also good at setting up
+      databases. I enjoy working on both frontend and backend, but my preference
+      is usually backend. I also really enjoy building things from A to Z. I
+      don’t just focus on whether something works, but also on how it looks.
       <br />
       <br />
-      Ik ben iemand die oog heeft voor{" "}
-      <span className="text-[#ff4500]">details</span> en het belangrijk vindt
-      dat iets er netjes en verzorgd uitziet.{" "}
-      <span className="text-[#ff4500]">Design</span> speelt voor mij een grote
-      rol; ik vind het leuk om na te denken over hoe iets niet alleen
-      functioneel, maar ook visueel aantrekkelijk kan zijn.
+      I am someone who has an eye for{" "}
+      <span className="text-[#ff4500]">detail</span> and values that things look
+      clean and well polished.{" "}
+      <span className="text-[#ff4500]">Design</span> plays a big role for me; I
+      enjoy thinking about how something can be not only functional, but also
+      visually appealing.
       <br />
-      Mijn interesse in <span className="text-[#ff4500]">
-        computers
-      </span> en <span className="text-[#ff4500]">techniek</span> heb ik al van
-      jongs af aan, en door de jaren heen is dat alleen maar verder gegroeid.
-      Het heeft ervoor gezorgd dat ik me steeds meer ben gaan verdiepen in het
-      bouwen van complete en goed doordachte{" "}
-      <span className="text-[#ff4500]">oplossingen</span>.
+      My interest in <span className="text-[#ff4500]">computers</span> and{" "}
+      <span className="text-[#ff4500]">technology</span> started at a young age,
+      and over the years it has only grown. It made me dive deeper into building
+      complete and well thought-out{" "}
+      <span className="text-[#ff4500]">solutions</span>.
       <br />
       <br />
       <div className="flex flex-col items-center">
         <div className="text-black-400 text-sm -ml-100">S C R O L L</div>
         <br />
-        {/* Lijn */}
         <div className="w-[2px] h-79 bg-gray-500 -ml-100 "></div>
       </div>{" "}
       <br />
       <br />
-      In mijn vrije tijd ben ik graag actief met{" "}
-      <span className="text-[#ff4500]">sport</span> en{" "}
-      <span className="text-[#ff4500]">gym</span>. Ik hou van{" "}
-      <span className="text-[#ff4500]">zwemmen</span> en breng graag tijd door
-      in de <span className="text-[#ff4500]">natuur</span>, vooral in de{" "}
-      <span className="text-[#ff4500]">parken</span>.
+      In my free time I like being active with{" "}
+      <span className="text-[#ff4500]">sports</span> and{" "}
+      <span className="text-[#ff4500]">gym</span>. I enjoy{" "}
+      <span className="text-[#ff4500]">swimming</span> and spending time in{" "}
+      <span className="text-[#ff4500]">nature</span>, especially in{" "}
+      <span className="text-[#ff4500]">parks</span>.
       <br />
       <br />
-      Ik ga vaak naar het <span className="text-[#ff4500]">
+      I often go to <span className="text-[#ff4500]">
         Ledeboerpark
       </span>{" "}
-      in Enschede. Het is een rustig en groen park waar ik graag wandel en even
-      tot rust kom. Daarnaast ben ik een echte{" "}
-      <span className="text-[#ff4500]">filmliefhebber</span>.
+      in Enschede. It is a calm and green park where I like to walk and unwind.
+      Besides that, I am a true{" "}
+      <span className="text-[#ff4500]">Cinephile</span>.
       <br />
       <br />
-      Ik ben iemand die graag leert, goed kan samenwerken en altijd probeert
-      zichzelf te verbeteren.
     </>
   );
-
-  //   const previewText = (
-  //     <>
-  // Ik ben een <span className="text-[#ff4500]">designer</span>,{" "}
-  // <span className="text-[#ff4500]">Frontend</span> en{" "}
-  // <span className="text-[#ff4500]">Backend</span>{" "}
-  // <span className="text-[#ff4500]">developer</span> die nog volop aan het groeien is<span className="text-[#ff4500]">...</span>
-  //     </>
-  //   );
 
   return (
     <div className="min-h-screen py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-left mb-16"
         >
           <div className="max-w-4xl flex flex-col items-start">
-            {/* TITEL */}
             <h1 className="text-4xl sm:text-5xl font-bold text-black mb-4 ml-4">
-              Over mij...
+              About me...
             </h1>
-            {/* LIJN */}
           </div>
         </motion.div>
 
         <div className="mb-20">
           <div className="max-w-4xl mx-auto flex flex-col items-start mr-90">
-            {" "}
-            {/* LINKS - TEKST */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -176,172 +127,90 @@ export function About() {
               viewport={{ once: true }}
               className="w-full"
             >
-              {/* Inklapbare tekst */}
               <motion.p className="text-black-600 text-lg leading-relaxed mb-4 ml-4 text-left">
                 {fullText}
               </motion.p>
             </motion.div>
-            {/* RECHTS - Images */}
-            {/* <div className="flex-1 relative min-h-[600px]">
-              {[aboutmeimg3, aboutmeimg2, aboutmeimg1, aboutmeimg4].map((img, i) => (
-                <motion.div
-                  key={i}
-                  className={`absolute rounded-2xl overflow-hidden shadow-2xl border-2 border-[#ff4500]`}
-                  style={{
-                    width: i % 2 === 0 ? 224 : 256,
-                    height: i % 2 === 0 ? 224 : 256,
-                    top: i < 2 ? (i === 0 ? -40 : "50%") : i === 2 ? "auto" : "auto",
-                    bottom: i > 1 ? (i === 2 ? -40 : -120) : "auto",
-                    left: i % 2 === 0 ? (i === 0 ? 0 : 40) : "auto",
-                    right: i % 2 !== 0 ? 0 : "auto",
-                    transform: i === 1 ? "translateY(-50%)" : "none",
-                  }}
-                >
-                  <ImageWithFallback
-                    src={img}
-                    alt={`Jad ${i + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
-              ))}
-            </div> */}
           </div>
         </div>
-        <br />
-        <br />
-        <br />
 
-        <div className="h-[5px] w-70 bg-black ml-20"></div>
-        <div className="h-[5px] w-70 bg-[#ff4500] ml-200"></div>
-
-        <br />
-        <br />
-        <br />
-        <br />
-        {/* <br /><br /><br /><br />
-<div className="mb-20">
-  <h2 className="text-3xl font-bold text-black text-center mb-16">
-    Meer over mijn werk?
-  </h2>
-
-  <div className="space-y-16">
-
-    {values.map((value, index) => (
-<motion.div
-  key={index}
-  initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  viewport={{ once: true, amount: 0.4 }}
-  transition={{ duration: 0.6, ease: "easeOut" }}
-  className={`flex ${
-    index % 2 === 0 ? "justify-start" : "justify-end"
-  }`}
->
-        <div className="max-w-md">
-          <div className="text-[#ff4500] mb-3 flex">
-            {value.icon}
-          </div>
-          <h3 className="text-black text-xl font-semibold mb-2">
-            {value.title}
-          </h3>
-          <p className="text-black-400">
-            {value.description}
-          </p>
-        </div>
-      </motion.div>
-    ))}
-
-  </div>
-</div> */}
-
-        <h2 className="text-xl text-center text-[#ff4500] mb-8 font-semibold">
-          Nog Meer????
+        {/* <h2 className="text-xl text-center text-[#ff4500] mb-8 font-semibold">
+          More???
         </h2>
 
         <div className="grid md:grid-cols-3 gap-10 text-center">
-          {/* 🟢 */}
           <motion.div className="p-4">
             <p className="text-black-400 text-sm mb-1 font-bold">Status</p>
             <p className="text-black">
-              Beschikbaar voor stage…
+              Available for an internship…
               <span className="text-[#ff4500]">
                 {" "}
-                maar ook voor een lange vakantie ergens ver… Alaska
-                bijvoorbeeld.
+                but also for a long vacation somewhere far… Alaska for example.
               </span>
             </p>
           </motion.div>
 
           <motion.div className="p-4">
             <p className="text-black-400 text-sm mb-1 font-bold">
-              Brein status
+              Brain status
             </p>
             <p className="text-black">
-              React aan het leren…
+              Learning React…
               <span className="text-[#ff4500]">
                 {" "}
-                begrijp er nog geen zak van
+                still don’t really understand it yet
               </span>
             </p>
           </motion.div>
 
-          {/* 🕵️ */}
           <motion.div className="p-4">
-            <p className="text-black-400 text-sm mb-1 font-bold">Nu?</p>
+            <p className="text-black-400 text-sm mb-1 font-bold">Now?</p>
             <p className="text-black">
-              Of in de Basic-Fit
+              Either at the gym
               <br />
-              of een film aan het kijken
+              or watching a movie
               <br />
               <span className="text-[#ff4500]">
-                (of doen alsof ik code snap)
+                (or pretending I understand code)
               </span>
             </p>
           </motion.div>
-        </div>
-        <br />
-        <br />
-        <br />
-        <div className="flex flex-col items-center">
-          <div className="text-[#ff4500] text-sm mb-2 -mr-170">S C R O L L</div>
+        </div> */}
 
-          {/* Lijn */}
-          <div className="w-[2px] h-79 bg-[#ff4500] -mr-170"></div>
-        </div>
-        <div className="h-[5px] w-70 bg-[#ff4500] mt-5"></div>
+              <div className="flex flex-col items-center">
+        <div className="text-[#ff4500] text-sm -mr-150">S C R O L L</div>
+        <br />
+        <div className="w-[2px] h-79 bg-[#ff4500] -mr-150 "></div>
+      </div>
+      <br /><br /><br /><br /><br />
 
-        <br />
-        <br />
-        <br />
-        {/* SKILLS */}
         <div className="mb-20 max-w-5xl mx-auto relative">
           <h2 className="text-3xl font-semibold text-black mb-16 text-center">
             How I think <span className="text-[#ff4500]">&</span> build
           </h2>
 
-          {/* CENTER LINE */}
           <div className="absolute left-1/2 top-0 h-full w-[2px] bg-black/10 -translate-x-1/2" />
 
           <div className="space-y-24">
             {[
               {
                 title: "Understanding the problem",
-                text: "Ik probeer eerst goed te begrijpen wat er precies gemaakt moet worden. Niet alleen wat er gevraagd wordt, maar ook waarom. Zo voorkom ik dat ik later dingen opnieuw moet doen.",
+                text: "I first try to understand exactly what needs to be built. Not just what is asked, but also why. This prevents me from having to redo things later.",
                 side: "left",
               },
               {
                 title: "Thinking things through",
-                text: "Ik denk eerst na over hoe alles in elkaar zit voordat ik begin met bouwen. Dat maakt het later makkelijker om alles netjes en logisch op te zetten.",
+                text: "I think about how everything fits together before I start building. That makes it easier to keep everything clean and logical.",
                 side: "right",
               },
               {
                 title: "Backend work",
-                text: "Ik werk graag aan de backend. Daar komt alles samen. Ik gebruik bijvoorbeeld C# en .NET om dingen te bouwen die goed en stabiel werken.",
+                text: "I enjoy working on the backend. That’s where everything comes together. I use C# and .NET to build things that are stable and reliable.",
                 side: "left",
               },
               {
                 title: "Frontend",
-                text: "Ik vind het belangrijk dat alles er netjes uitziet en fijn werkt. Kleine dingen zoals spacing en beweging maken al veel verschil.",
+                text: "I think it’s important that everything looks clean and works smoothly. Small details like spacing and animations make a big difference.",
                 side: "right",
               },
             ].map((item, i) => {
@@ -357,12 +226,10 @@ export function About() {
                   className={`flex ${isLeft ? "justify-start pr-12" : "justify-end pl-12"}`}
                 >
                   <div className="max-w-md">
-                    {/* TITLE */}
                     <h3 className="text-black font-semibold text-lg mb-2">
                       <span className="text-[#ff4500]">{item.title}</span>
                     </h3>
 
-                    {/* TEXT */}
                     <p className="text-black-400 text-sm leading-relaxed">
                       {item.text}
                     </p>
@@ -372,26 +239,7 @@ export function About() {
             })}
           </div>
         </div>
-        <br />
 
-        <div className="flex flex-col items-end gap-12 mr-200 -mt-10">
-          <div className="h-[2px] w-70 bg-[#ff4500]"></div>
-
-          <div className="h-[2px] w-70 bg-black"></div>
-
-          <div className="h-[2px] w-70 bg-[#ff4500]"></div>
-
-          <div className="h-[2px] w-70 bg-black"></div>
-        </div>
-
-        <br />
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-20"
-        ></motion.div>
       </div>
     </div>
   );

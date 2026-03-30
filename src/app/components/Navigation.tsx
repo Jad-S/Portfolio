@@ -9,7 +9,7 @@ export function Navigation() {
 
   const links = [
     { path: "/", label: "Home" },
-    { path: "/about", label: "Auteur" },
+    { path: "/about", label: "Author" },
     { path: "/contact", label: "Hire me" },
   ];
 
