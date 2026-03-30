@@ -7,6 +7,7 @@ import aboutmeimg2 from "./figma/aboutmeimg2.jpg";
 import aboutmeimg3 from "./figma/aboutmeimg3.jpg";
 import aboutmeimg4 from "./figma/aboutmeimg4.jpg";
 import { TypewriterText } from "./TypewriterText";
+import { SiSharp, SiReact, SiMysql, SiTailwindcss, SiHtml5, SiFigma } from "react-icons/si";
 
 export function About() {
   // const [isExpanded, setIsExpanded] = useState(false);
@@ -177,69 +178,95 @@ export function About() {
           </motion.div>
         </div> */}
 
-              <div className="flex flex-col items-center">
+              {/* <div className="flex flex-col items-center">
         <div className="text-[#ff4500] text-sm -mr-150">S C R O L L</div>
         <br />
         <div className="w-[2px] h-79 bg-[#ff4500] -mr-150 "></div>
       </div>
-      <br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br /> */}
 
-        <div className="mb-20 max-w-5xl mx-auto relative">
-          <h2 className="text-3xl font-semibold text-black mb-16 text-center">
-            How I think <span className="text-[#ff4500]">&</span> build
-          </h2>
+<hr className="border-black/80 border-t-2 my-10" />
+<br /><br />
+     <div className="mb-20 max-w-5xl mx-auto relative">
+  <h2 className="text-3xl font-semibold text-black mb-16 text-center">
+    Tech <span className="text-[#ff4500]">&</span> Languages
+  </h2>
 
-          <div className="absolute left-1/2 top-0 h-full w-[2px] bg-black/10 -translate-x-1/2" />
+  <div className="absolute left-1/2 top-0 h-full w-[2px] bg-black/10 -translate-x-1/2" />
 
-          <div className="space-y-24">
-            {[
-              {
-                title: "Understanding the problem",
-                text: "I first try to understand exactly what needs to be built. Not just what is asked, but also why. This prevents me from having to redo things later.",
-                side: "left",
-              },
-              {
-                title: "Thinking things through",
-                text: "I think about how everything fits together before I start building. That makes it easier to keep everything clean and logical.",
-                side: "right",
-              },
-              {
-                title: "Backend work",
-                text: "I enjoy working on the backend. That’s where everything comes together. I use C# and .NET to build things that are stable and reliable.",
-                side: "left",
-              },
-              {
-                title: "Frontend",
-                text: "I think it’s important that everything looks clean and works smoothly. Small details like spacing and animations make a big difference.",
-                side: "right",
-              },
-            ].map((item, i) => {
-              const isLeft = item.side === "left";
+  <div className="space-y-24">
+    {[
+   {
+    title: "React",
+    icon: SiReact,
+    text: "I use React to build interactive stuff. I like how you can split everything into components and still keep it feeling smooth.",
+    side: "left",
+  },
+  {
+    title: "C#",
+    icon: SiSharp,
+    text: "I mainly use C# for backend work. It just feels logical to me and helps me build things in a structured way.",
+    side: "right",
+  },
+  {
+    title: "MySQL",
+    icon: SiMysql,
+    text: "I use MySQL to store and manage data. I like that everything is structured and easy to work with.",
+    side: "left",
+  },
+  {
+    title: "HTML & CSS",
+    icon: SiHtml5,
+    text: "This is the base of everything. I use it to build layouts and make sure things look clean and well put together.",
+    side: "right",
+  },
+  {
+    title: "Tailwind",
+    icon: SiTailwindcss,
+    text: "I use Tailwind because it lets me move fast. I can focus more on building instead of thinking about styling too much.",
+    side: "left",
+  },
+  {
+    title: "Figma",
+    icon: SiFigma,
+    text: "I use Figma to think through designs before I start coding. It helps me get a clear picture of what I’m building.",
+    side: "right",
+  },
+    ].map((item, i) => {
+      const isLeft = item.side === "left";
+      const Icon = item.icon;
 
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{ duration: 0.6 }}
-                  className={`flex ${isLeft ? "justify-start pr-12" : "justify-end pl-12"}`}
-                >
-                  <div className="max-w-md">
-                    <h3 className="text-black font-semibold text-lg mb-2">
-                      <span className="text-[#ff4500]">{item.title}</span>
-                    </h3>
+      return (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6 }}
+          className={`flex ${isLeft ? "justify-start pr-12" : "justify-end pl-12"}`}
+        >
+          <div className="max-w-md">
 
-                    <p className="text-black-400 text-sm leading-relaxed">
-                      {item.text}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
+            {/* TITLE + ICON */}
+            <h3 className="text-black font-semibold text-lg mb-2 flex items-center gap-5 group">
+              <span className="text-[#ff4500]">{item.title}</span>
+                --
+              <Icon
+                size={28}
+                className="text-[#ff4500] transition-transform duration-300 group-hover:translate-x-3 group-hover:-translate-y-1"
+              />
+            </h3>
+
+            <p className="text-black-400 text-sm leading-relaxed">
+              {item.text}
+            </p>
+
           </div>
-        </div>
-
+        </motion.div>
+      );
+    })}
+  </div>
+</div>
       </div>
     </div>
   );
