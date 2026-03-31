@@ -7,7 +7,9 @@ type RoughBorderProps = {
   strokeWidth?: number;
   roughness?: number;
   bowing?: number;
-  seed?: number; // 👈 toegevoegd
+  seed?: number;
+  stroke?: string;
+  fill?: string;
 };
 
 export default function RoughBorder({
@@ -16,7 +18,9 @@ export default function RoughBorder({
   strokeWidth = 2,
   roughness = 3.5,
   bowing = 2,
-  seed = 123, // 👈 vaste seed
+  seed = 123,
+  stroke = "#000",
+  fill = "white",
 }: RoughBorderProps) {
   const svgRef = useRef<SVGSVGElement | null>(null);
 
@@ -32,29 +36,29 @@ export default function RoughBorder({
 
     const rc = rough.svg(svg);
 
-    // 🔥 OUTER BORDER
+    // OUTER BORDER
     const node = rc.rectangle(0, 0, width, height, {
-      stroke: "#000",
+      stroke: stroke,
       strokeWidth: strokeWidth,
       roughness: roughness,
       bowing: bowing,
-      fill: "white",
-      seed: seed, // 👈 hier vastzetten
+      fill: fill,
+      seed: seed,
     });
 
-    // 🔥 INNER BORDER (subtle detail)
+    // INNER BORDER (subtle detail)
     const node2 = rc.rectangle(2, 2, width - 4, height - 4, {
-      stroke: "#000",
+      stroke: stroke,
       strokeWidth: strokeWidth * 0.4,
       roughness: roughness + 0.5,
       bowing: bowing * 0.5,
-      seed: seed + 1, // 👈 andere maar consistente seed
+      seed: seed + 1,
     });
 
     svg.appendChild(node);
     svg.appendChild(node2);
 
-  }, [width, height, strokeWidth, roughness, bowing, seed]);
+  }, [width, height, strokeWidth, roughness, bowing, seed, stroke, fill]);
 
-  return <svg ref={svgRef} width={width} height={height} />;
+  return <svg ref={svgRef} width={width} height={height} className="absolute inset-0" />;
 }

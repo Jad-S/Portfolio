@@ -19,6 +19,13 @@ export function Projects() {
         "In this project I built a full-stack web application using React and .NET.",
       image: ProjectIMG,
     },
+        {
+      id: 2,
+      title: "DierenTuin-Website",
+      description:
+        "In this project I built a full zoo website.",
+      image: ProjectIMG,
+    }
   ];
 
   return (

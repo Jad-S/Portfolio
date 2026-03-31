@@ -28,6 +28,7 @@ export function ProjectDetails() {
   const thumbnailRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ w: 0, h: 0 });
+  
 
   const totalProjects = projects.length;
 
