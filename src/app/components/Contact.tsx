@@ -272,7 +272,7 @@ export function Contact() {
               <div className="relative inline-block group">
                 <div className="absolute inset-0 -m-2">
                   <RoughBorder 
-                    width={120} 
+                    width={130} 
                     height={48} 
                     roughness={1.8} 
                     bowing={1.2} 
