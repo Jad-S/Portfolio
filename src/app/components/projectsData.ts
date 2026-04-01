@@ -28,11 +28,11 @@ export const projects: Project[] = [
     title: "Top2000 Project",
     description:
       "In this project I built a full-stack web application using React and .NET.",
-    about: `During my third year, I worked on this project together with a group. We recreated the well-known NPO Radio 2 Top 2000 as a web application.
+    about: `During my third year, I worked on this project with a group where we recreated the NPO Radio 2 Top 2000 as a web application.
 
-For me personally, this was a really valuable experience where I focused on both the user interface and backend functionality. I worked on building features, improving the UI, and making sure everything worked smoothly together.
+I was mainly involved in building features for both the frontend and backend. On the frontend, I worked with React to build the interface and pages like the one for songs and T0P2000-Entries per year. On the backend, I helped connect things to the API so the data could be used in the application.
 
-This project helped me grow a lot as a developer, especially in working with React, structuring components, and connecting frontend with backend API's.`,
+It was a project where everything had to work together, from fetching data to displaying it correctly in the UI.`,
     
     technologies: [
       SiSharp,
