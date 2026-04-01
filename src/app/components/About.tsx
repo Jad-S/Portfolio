@@ -1,10 +1,26 @@
 import { motion } from "motion/react";
-import { SiSharp, SiReact, SiMysql, SiTailwindcss, SiHtml5, SiFigma } from "react-icons/si";
+import {
+  SiSharp,
+  SiReact,
+  SiMysql,
+  SiTailwindcss,
+  SiHtml5,
+  SiFigma,
+  SiJavascript,
+} from "react-icons/si";
 import RoughBorder from "./RoughBorder";
 import { useEffect, useRef, useState } from "react";
 import rough from "roughjs";
 
-function RoughCircle({ size, seed, filled }: { size: number; seed: number; filled?: boolean }) {
+function RoughCircle({
+  size,
+  seed,
+  filled,
+}: {
+  size: number;
+  seed: number;
+  filled?: boolean;
+}) {
   const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
@@ -25,7 +41,9 @@ function RoughCircle({ size, seed, filled }: { size: number; seed: number; fille
     svg.appendChild(node);
   }, [size, seed, filled]);
 
-  return <svg ref={svgRef} width={size} height={size} className="absolute inset-0" />;
+  return (
+    <svg ref={svgRef} width={size} height={size} className="absolute inset-0" />
+  );
 }
 
 export function About() {
@@ -33,13 +51,14 @@ export function About() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       const progress = (window.scrollY / scrollHeight) * 100;
       setScrollProgress(progress);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Dynamic sizing for main text box
@@ -57,11 +76,11 @@ export function About() {
     update();
     const ro = new ResizeObserver(update);
     ro.observe(textBoxRef.current);
-    window.addEventListener('resize', update);
+    window.addEventListener("resize", update);
 
     return () => {
       ro.disconnect();
-      window.removeEventListener('resize', update);
+      window.removeEventListener("resize", update);
     };
   }, []);
 
@@ -70,36 +89,40 @@ export function About() {
       I am a <span className="text-[#ff4500] font-semibold">designer</span>,{" "}
       <span className="text-[#ff4500] font-semibold">Frontend</span> and{" "}
       <span className="text-[#ff4500] font-semibold">Backend</span>{" "}
-      <span className="text-[#ff4500] font-semibold">developer</span> who is still growing<span className="text-[#ff4500]">...</span>
+      <span className="text-[#ff4500] font-semibold">developer</span> who is
+      still growing<span className="text-[#ff4500]">...</span>
       <br />
-      <br />
-      I can work well with <span className="text-[#ff4500] font-semibold">HTML</span>,{" "}
+      <br />I can work well with{" "}
+      <span className="text-[#ff4500] font-semibold">HTML</span>,{" "}
       <span className="text-[#ff4500] font-semibold">CSS</span>,{" "}
       <span className="text-[#ff4500] font-semibold">Javascript</span> and{" "}
-      <span className="text-[#ff4500] font-semibold">C#</span>. I am also good at setting up
-      databases. I enjoy working on both frontend and backend, but my preference
-      is usually backend. I also really enjoy building things from A to Z. I
-      don't just focus on whether something works, but also on how it looks.
+      <span className="text-[#ff4500] font-semibold">C#</span>. I am also good
+      at setting up databases. I enjoy working on both frontend and backend, but
+      my preference is usually backend. I also really enjoy building things from
+      A to Z. I don't just focus on whether something works, but also on how it
+      looks.
       <br />
+      <br />I am someone who has an eye for{" "}
+      <span className="text-[#ff4500] font-semibold">detail</span> and values
+      that things look clean and well polished.{" "}
+      <span className="text-[#ff4500] font-semibold">Design</span> plays a big
+      role for me; I enjoy thinking about how something can be not only
+      functional, but also visually appealing.
       <br />
-      I am someone who has an eye for{" "}
-      <span className="text-[#ff4500] font-semibold">detail</span> and values that things look
-      clean and well polished.{" "}
-      <span className="text-[#ff4500] font-semibold">Design</span> plays a big role for me; I
-      enjoy thinking about how something can be not only functional, but also
-      visually appealing.
-      <br />
-      My interest in <span className="text-[#ff4500] font-semibold">computers</span> and{" "}
-      <span className="text-[#ff4500] font-semibold">technology</span> started at a young age,
-      and over the years it has only grown. It made me dive deeper into building
-      complete and well thought-out{" "}
+      My interest in{" "}
+      <span className="text-[#ff4500] font-semibold">computers</span> and{" "}
+      <span className="text-[#ff4500] font-semibold">technology</span> started
+      at a young age, and over the years it has only grown. It made me dive
+      deeper into building complete and well thought-out{" "}
       <span className="text-[#ff4500] font-semibold">solutions</span>.
       <br />
       <br />
       <div className="flex flex-col items-center my-8 sm:my-12">
-        <div className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm tracking-[0.3em] mb-4">S C R O L L</div>
+        <div className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm tracking-[0.3em] mb-4">
+          S C R O L L
+        </div>
         <div className="relative w-[2px] h-32 sm:h-40 bg-gray-300 dark:bg-gray-700">
-          <motion.div 
+          <motion.div
             className="absolute top-0 left-0 w-full bg-[#ff4500]"
             style={{ height: `${scrollProgress}%` }}
           />
@@ -109,15 +132,14 @@ export function About() {
       In my free time I like being active with{" "}
       <span className="text-[#ff4500] font-semibold">sports</span> and{" "}
       <span className="text-[#ff4500] font-semibold">gym</span>. I enjoy{" "}
-      <span className="text-[#ff4500] font-semibold">swimming</span> and spending time in{" "}
-      <span className="text-[#ff4500] font-semibold">nature</span>, especially in{" "}
-      <span className="text-[#ff4500] font-semibold">parks</span>.
+      <span className="text-[#ff4500] font-semibold">swimming</span> and
+      spending time in{" "}
+      <span className="text-[#ff4500] font-semibold">nature</span>, especially
+      in <span className="text-[#ff4500] font-semibold">parks</span>.
       <br />
-      <br />
-      I often go to <span className="text-[#ff4500] font-semibold">
-        Ledeboerpark
-      </span>{" "}
-      in Enschede. It is a calm and green park where I like to walk and unwind.
+      <br />I often go to{" "}
+      <span className="text-[#ff4500] font-semibold">Ledeboerpark</span> in
+      Enschede. It is a calm and green park where I like to walk and unwind.
       Besides that, I am a true{" "}
       <span className="text-[#ff4500] font-semibold">Cinephile</span>.
       <br />
@@ -128,7 +150,6 @@ export function About() {
   return (
     <div className="min-h-screen py-12 sm:py-16 md:py-20 px-4 sm:px-6 relative overflow-x-hidden">
       <div className="max-w-6xl mx-auto">
-
         {/* Header with rough circles */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -161,19 +182,22 @@ export function About() {
             <div className="relative">
               {textBoxSize.width > 0 && textBoxSize.height > 0 && (
                 <div className="absolute inset-0 pointer-events-none">
-                  <RoughBorder 
-                    width={textBoxSize.width} 
-                    height={textBoxSize.height} 
-                    strokeWidth={3} 
-                    roughness={2.5} 
-                    bowing={1.5} 
+                  <RoughBorder
+                    width={textBoxSize.width}
+                    height={textBoxSize.height}
+                    strokeWidth={3}
+                    roughness={2.5}
+                    bowing={1.5}
                     seed={100}
                     stroke="#ff4500"
                     fill="transparent"
                   />
                 </div>
               )}
-              <div ref={textBoxRef} className="p-4 sm:p-6 md:p-8 lg:p-12 py-4 sm:py-5 md:py-6 lg:py-7">
+              <div
+                ref={textBoxRef}
+                className="p-4 sm:p-6 md:p-8 lg:p-12 py-4 sm:py-5 md:py-6 lg:py-7"
+              >
                 <motion.p className="text-gray-800 dark:text-gray-100 text-sm sm:text-base lg:text-lg leading-relaxed relative z-10">
                   {fullText}
                 </motion.p>
@@ -181,12 +205,12 @@ export function About() {
             </div>
 
             {/* Floating decorative elements */}
-            <motion.div 
+            <motion.div
               className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-[#ff4500]/10 rounded-full"
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 3, repeat: Infinity }}
             />
-            <motion.div 
+            <motion.div
               className="absolute -bottom-6 -right-6 sm:-bottom-8 sm:-right-8 w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-[#ff4500]/10 rounded-full"
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2.5, repeat: Infinity }}
@@ -201,7 +225,7 @@ export function About() {
 
         {/* Tech & Languages Timeline */}
         <div className="mb-12 sm:mb-16 md:mb-20 max-w-5xl mx-auto relative">
-          <motion.h2 
+          <motion.h2
             className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-12 sm:mb-16 md:mb-20 text-center"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -215,48 +239,60 @@ export function About() {
 
           <div className="space-y-12 sm:space-y-20 md:space-y-32">
             {[
-{
-    title: "React",
-    icon: SiReact,
-    text: "I use React to build interfaces. It helps me keep things organized by breaking everything into smaller components.",
-    side: "left",
-  },
-  {
-    title: "C#",
-    icon: SiSharp,
-    text: "I mainly use C# for backend work. I like working with it because it’s structured and fits well with how I build things.",
-    side: "right",
-  },
-  {
-    title: "MySQL",
-    icon: SiMysql,
-    text: "I use MySQL to store and retrieve data. I usually work with it when data needs to be structured and related.",
-    side: "left",
-  },
-  {
-    title: "HTML & CSS",
-    icon: SiHtml5,
-    text: "This is the foundation of what I build. I use it to set up layouts and make sure everything is clear and structured.",
-    side: "right",
-  },
-  {
-    title: "Tailwind",
-    icon: SiTailwindcss,
-    text: "I use Tailwind to move faster with styling, without having to think too much about every detail.",
-    side: "left",
-  },
-  {
-    title: "Figma",
-    icon: SiFigma,
-    text: "I use Figma to sketch out ideas before coding, so I have a clear direction of what I’m building.",
-    side: "right",
-  },
+              {
+                title: "React",
+                icon: SiReact,
+                text: "I use React to build interfaces and split things into components. I’m still learning and getting more comfortable with it.",
+                side: "left",
+              },
+              {
+                title: "C#",
+                icon: SiSharp,
+                text: "I use C# mostly for backend work. I like working with it and I’m still figuring out better ways to structure my code.",
+                side: "right",
+              },
+              {
+                title: "MySQL",
+                icon: SiMysql,
+                text: "I use MySQL to store and work with data. I’m comfortable with the basics and still learning more about how to set things up properly.",
+                side: "left",
+              },
+              {
+                title: "HTML & CSS",
+                icon: SiHtml5,
+                text: "I use HTML and CSS to build the structure and layout of my projects. It’s where I focus on making things look clean.",
+                side: "right",
+              },
+              {
+                title: "JavaScript",
+                icon: SiJavascript,
+                text: "I use JavaScript to make things interactive. I’m still improving and learning new ways to write it better.",
+                side: "left",
+              },
+              {
+                title: "Tailwind",
+                icon: SiTailwindcss,
+                text: "I use Tailwind to style things quickly without overthinking CSS. It helps me move faster while building.",
+                side: "right",
+              },
+              {
+                title: "Figma",
+                icon: SiFigma,
+                text: "I use Figma to plan out ideas before coding. It helps me get a clearer picture of what I want to build.",
+                side: "left",
+              },
             ].map((item, i) => {
               const isLeft = item.side === "left";
               const Icon = item.icon;
 
               return (
-                <TechCard key={i} item={item} isLeft={isLeft} Icon={Icon} index={i} />
+                <TechCard
+                  key={i}
+                  item={item}
+                  isLeft={isLeft}
+                  Icon={Icon}
+                  index={i}
+                />
               );
             })}
           </div>
@@ -282,11 +318,11 @@ function TechCard({ item, isLeft, Icon, index }: any) {
     update();
     const ro = new ResizeObserver(update);
     ro.observe(cardRef.current);
-    window.addEventListener('resize', update);
+    window.addEventListener("resize", update);
 
     return () => {
       ro.disconnect();
-      window.removeEventListener('resize', update);
+      window.removeEventListener("resize", update);
     };
   }, []);
 
@@ -299,27 +335,35 @@ function TechCard({ item, isLeft, Icon, index }: any) {
       className="relative"
     >
       {/* Mobile & Tablet: Center everything */}
-      <div className={`flex justify-center md:justify-start ${isLeft ? "md:pr-[55%]" : "md:justify-end md:pl-[55%]"}`}>
+      <div
+        className={`flex justify-center md:justify-start ${isLeft ? "md:pr-[55%]" : "md:justify-end md:pl-[55%]"}`}
+      >
         <div className="relative w-full max-w-[90vw] sm:max-w-[400px] group hover:scale-105 transition-transform duration-300">
           {cardSize.width > 0 && cardSize.height > 0 && (
             <div className="absolute inset-0 pointer-events-none">
-              <RoughBorder 
-                width={cardSize.width} 
-                height={cardSize.height} 
-                strokeWidth={2.5} 
-                roughness={2} 
-                bowing={1} 
+              <RoughBorder
+                width={cardSize.width}
+                height={cardSize.height}
+                strokeWidth={2.5}
+                roughness={2}
+                bowing={1}
                 seed={300 + index * 10}
                 stroke="#ff4500"
                 fill="transparent"
               />
             </div>
           )}
-          
-          <div ref={cardRef} className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 md:px-8 lg:px-12 py-6 sm:py-8">
+
+          <div
+            ref={cardRef}
+            className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 md:px-8 lg:px-12 py-6 sm:py-8"
+          >
             {/* Icon with rough circle */}
             <div className="relative inline-block mb-3">
-              <Icon size={32} className="sm:w-10 sm:h-10 text-[#ff4500] relative z-10" />
+              <Icon
+                size={32}
+                className="sm:w-10 sm:h-10 text-[#ff4500] relative z-10"
+              />
               <div className="absolute inset-0 -m-2">
                 <RoughCircle size={48} seed={400 + index * 10} />
               </div>
