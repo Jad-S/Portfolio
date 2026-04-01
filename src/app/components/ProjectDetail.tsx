@@ -14,6 +14,31 @@ import {
 import RoughBorder from "./RoughBorder";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { projects } from "./projectsData";
+import rough from "roughjs";
+
+function RoughCircle({ size, seed, filled }: { size: number; seed: number; filled?: boolean }) {
+  const svgRef = useRef<SVGSVGElement>(null);
+
+  useEffect(() => {
+    if (!svgRef.current) return;
+    const svg = svgRef.current;
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+    const rc = rough.svg(svg);
+    const node = rc.circle(size / 2, size / 2, size - 4, {
+      stroke: "#ff4500",
+      strokeWidth: 3,
+      roughness: 2,
+      seed: seed,
+      fill: filled ? "#ff4500" : "none",
+      fillStyle: filled ? "solid" : undefined,
+    });
+
+    svg.appendChild(node);
+  }, [size, seed, filled]);
+
+  return <svg ref={svgRef} width={size} height={size} className="absolute inset-0" />;
+}
 
 export function ProjectDetails() {
   const params = useParams();
@@ -104,8 +129,22 @@ export function ProjectDetails() {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center py-16 px-4">
+    <div className="min-h-screen flex justify-center items-center py-16 px-4 relative">
       
+      {/* Decorative rough circles */}
+      <div className="absolute top-32 left-12 w-24 h-24 opacity-20">
+        <RoughCircle size={96} seed={300} />
+      </div>
+      <div className="absolute top-48 right-20 w-32 h-32 opacity-15">
+        <RoughCircle size={128} seed={310} />
+      </div>
+      <div className="absolute bottom-32 left-32 w-20 h-20 opacity-25">
+        <RoughCircle size={80} seed={320} />
+      </div>
+      <div className="absolute bottom-48 right-16 w-28 h-28 opacity-20">
+        <RoughCircle size={112} seed={330} />
+      </div>
+
       {/* 🔥 ZOOM WRAPPER */}
       <div style={{ transform: "scale(0.9)", transformOrigin: "top center", width: "100%" }}>
         
@@ -115,7 +154,14 @@ export function ProjectDetails() {
           {/* ROUGH BORDER */}
           <div className="absolute inset-0 z-0 pointer-events-none">
             {size.w > 0 && size.h > 0 && (
-              <RoughBorder width={size.w} height={size.h} />
+              <RoughBorder 
+                width={size.w} 
+                height={size.h}
+                roughness={2.5}
+                bowing={2}
+                stroke="#ff4500"
+                strokeWidth={3}
+              />
             )}
           </div>
 
@@ -123,15 +169,23 @@ export function ProjectDetails() {
           <div className="relative z-10 bg-white px-6 lg:px-16 py-24 rotate-[0.4deg]">
 
             <div className="absolute top-8 right-[48px] z-20 w-10 h-10">
-              <div className="relative w-full h-full flex items-center justify-center">
+              <div className="relative w-full h-full flex items-center justify-center group">
                 
                 {/* ROUGH BORDER */}
-                <RoughBorder width={40} height={40} />
+                <RoughBorder 
+                  width={40} 
+                  height={40}
+                  roughness={2}
+                  bowing={1}
+                  seed={340}
+                  stroke="#ff4500"
+                  strokeWidth={2}
+                />
 
                 {/* BUTTON */}
                 <Link
                   to="/"
-                  className="absolute inset-0 flex items-center justify-center group"
+                  className="absolute inset-0 flex items-center justify-center z-10"
                 >
                   <svg
                     width="16"
@@ -156,6 +210,9 @@ export function ProjectDetails() {
               <div className="lg:col-span-7">
                 {/* MAIN IMAGE */}
                 <div className="relative aspect-[16/10] overflow-hidden group">
+                  {/* Decorative circles around image */}
+
+
                   <AnimatePresence mode="sync" custom={direction}>
                     <motion.div
                       key={currentScreenshot}
@@ -230,9 +287,12 @@ export function ProjectDetails() {
 
               {/* RIGHT */}
               <div className="lg:col-span-5 flex flex-col justify-between">
-                <div>
+                <div className="relative">
+                  {/* Decorative circle near title */}
+
+
                   <motion.h1
-                    className="text-[#ff4500] font-light mb-8 leading-tight"
+                    className="text-[#ff4500] font-light mb-8 leading-tight relative z-10"
                     style={{
                       fontSize: "clamp(2rem, 3.5vw, 4.5rem)",
                     }}
@@ -246,16 +306,19 @@ export function ProjectDetails() {
                   </p>
                 </div>
 
-                <div className="flex gap-3 items-center mt-4">
+                <div className="flex gap-3 items-center mt-4 flex-wrap">
                   {project.technologies?.map((Icon, index) => (
                     <div
                       key={index}
-                      className="w-12 h-12 rounded-full border border-black flex items-center justify-center bg-white group transition"
+                      className="relative w-12 h-12 group"
                     >
-                      <Icon
-                        className="text-black group-hover:text-[#ff4500] transition"
-                        size={22}
-                      />
+                      <RoughCircle size={48} seed={380 + index * 5} />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <Icon
+                          className="text-black group-hover:text-[#ff4500] transition"
+                          size={22}
+                        />
+                      </div>
                     </div>
                   ))}
                 </div>

@@ -51,20 +51,20 @@ This project helped me grow a lot as a developer, especially in working with Rea
   },
 
 
-  {
-    id: 2,
-    title: "Zoo Website",
-    description: "CRUD application with Razor Pages and SQL.",
-    about: "CRUD system for animal management with database connection.",
-    screenshots: ["https://via.placeholder.com/1400x900"],
-    links: { live: "#" },
-      technologies: [
-      SiSharp,
-      SiReact,
-      SiMysql,
-      SiTailwindcss,
-    ],
-  },
+  // {
+  //   id: 2,
+  //   title: "Zoo Website",
+  //   description: "CRUD application with Razor Pages and SQL.",
+  //   about: "CRUD system for animal management with database connection.",
+  //   screenshots: ["https://via.placeholder.com/1400x900"],
+  //   links: { live: "#" },
+  //     technologies: [
+  //     SiSharp,
+  //     SiReact,
+  //     SiMysql,
+  //     SiTailwindcss,
+  //   ],
+  // },
   // {
   //   id: 3,
   //   title: "Arduino System",

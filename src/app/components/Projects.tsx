@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { Info } from "lucide-react";
 import { RoughBox } from "./RoughBox";
 import ProjectIMG from "./figma/images/Project1IMG.png";
+// import ProjectIMG2 from "./figma/images/Project2IMG.png"
 
 interface Project {
   id: number;
@@ -16,16 +17,16 @@ export function Projects() {
       id: 1,
       title: "Top2000 Project",
       description:
-        "In this project I built a full-stack web application using React and .NET.",
+        "Recreated and Refind...",
       image: ProjectIMG,
-    },
-        {
-      id: 2,
-      title: "DierenTuin-Website",
-      description:
-        "In this project I built a full zoo website.",
-      image: ProjectIMG,
-    }
+     },
+    //     {
+    //   id: 2,
+    //   title: "Aventura",
+    //   description:
+    //     "Animals found a Home to gather with each other...",
+    //   image: ProjectIMG2,
+    // }
   ];
 
   return (
@@ -68,10 +69,9 @@ export function Projects() {
                     <h2 className="text-xl font-semibold text-black group-hover:text-[#ff4500] transition">
                       {project.title}
                     </h2>
-
-                    <p className="text-base text-gray-500 line-clamp-2">
-                      Recreated and refined...
-                    </p>
+<p className="text-base text-gray-500 line-clamp-2">
+  {project.description}
+</p>
                   </div>
 
                   {/* FOOTER */}

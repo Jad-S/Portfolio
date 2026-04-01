@@ -101,7 +101,7 @@ export function Home() {
                 className="mt-6"
               >
                 <div className="relative inline-block group">
-                  <div className="absolute inset-0 -m-2">
+                  <div className="absolute inset-0 -m-2 ">
                     <RoughBorder 
                       width={160} 
                       height={48} 
@@ -115,7 +115,7 @@ export function Home() {
                   </div>
                   <Link
                     to="/about"
-                    className="relative z-10 text-lg text-gray-900 dark:text-white group-hover:text-[#ff4500] transition-colors px-4 py-2 inline-block"
+                    className="relative z-10 text-lg text-gray-900 dark:text-white group-hover:text-[#ff4500] transition-colors px-4 py-1 inline-block"
                   >
                     Learn More...
                   </Link>
