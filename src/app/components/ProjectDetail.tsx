@@ -281,7 +281,7 @@ export function ProjectDetails() {
   onClick={nextScreenshot}
   className="absolute inset-0 flex items-center justify-center"
 >
-  <ChevronRight className="block mx-auto" size={18} />
+  <ChevronRight className="block mx-auto" size={20} />
 </button>
                   </div>
 

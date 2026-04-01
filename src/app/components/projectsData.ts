@@ -4,6 +4,8 @@ import top2000_3 from "./figma/images/Top2000Screenshot3.png";
 import top2000_4 from "./figma/images/Top2000Screenshot4.png";
 import top2000_5 from "./figma/images/Top2000Screenshot5.png";
 import top2000_6 from "./figma/images/Top2000Screenshot6.png";
+import top2000_one from "./figma/images/Project1IMG.png";
+
 
 import { SiSharp, SiReact, SiMysql, SiTailwindcss } from "react-icons/si";
 
@@ -40,6 +42,7 @@ This project helped me grow a lot as a developer, especially in working with Rea
     ],
 
     screenshots: [
+      top2000_one,
       top2000_2,
       top2000_1,
       top2000_3,
