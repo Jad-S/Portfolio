@@ -364,9 +364,6 @@ function TechCard({ item, isLeft, Icon, index }: any) {
                 size={32}
                 className="sm:w-10 sm:h-10 text-[#ff4500] relative z-10"
               />
-              <div className="absolute inset-0 -m-2">
-                <RoughCircle size={48} seed={400 + index * 10} />
-              </div>
             </div>
 
             {/* Title */}
