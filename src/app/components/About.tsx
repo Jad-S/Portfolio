@@ -215,42 +215,42 @@ export function About() {
 
           <div className="space-y-12 sm:space-y-20 md:space-y-32">
             {[
-              {
-                title: "React",
-                icon: SiReact,
-                text: "I use React to build interactive stuff. I like how you can split everything into components and still keep it feeling smooth.",
-                side: "left",
-              },
-              {
-                title: "C#",
-                icon: SiSharp,
-                text: "I mainly use C# for backend work. It just feels logical to me and helps me build things in a structured way.",
-                side: "right",
-              },
-              {
-                title: "MySQL",
-                icon: SiMysql,
-                text: "I use MySQL to store and manage data. I like that everything is structured and easy to work with.",
-                side: "left",
-              },
-              {
-                title: "HTML & CSS",
-                icon: SiHtml5,
-                text: "This is the base of everything. I use it to build layouts and make sure things look clean and well put together.",
-                side: "right",
-              },
-              {
-                title: "Tailwind",
-                icon: SiTailwindcss,
-                text: "I use Tailwind because it lets me move fast. I can focus more on building instead of thinking about styling too much.",
-                side: "left",
-              },
-              {
-                title: "Figma",
-                icon: SiFigma,
-                text: "I use Figma to think through designs before I start coding. It helps me get a clear picture of what I'm building.",
-                side: "right",
-              },
+{
+    title: "React",
+    icon: SiReact,
+    text: "I use React to build interfaces. It helps me keep things organized by breaking everything into smaller components.",
+    side: "left",
+  },
+  {
+    title: "C#",
+    icon: SiSharp,
+    text: "I mainly use C# for backend work. I like working with it because it’s structured and fits well with how I build things.",
+    side: "right",
+  },
+  {
+    title: "MySQL",
+    icon: SiMysql,
+    text: "I use MySQL to store and retrieve data. I usually work with it when data needs to be structured and related.",
+    side: "left",
+  },
+  {
+    title: "HTML & CSS",
+    icon: SiHtml5,
+    text: "This is the foundation of what I build. I use it to set up layouts and make sure everything is clear and structured.",
+    side: "right",
+  },
+  {
+    title: "Tailwind",
+    icon: SiTailwindcss,
+    text: "I use Tailwind to move faster with styling, without having to think too much about every detail.",
+    side: "left",
+  },
+  {
+    title: "Figma",
+    icon: SiFigma,
+    text: "I use Figma to sketch out ideas before coding, so I have a clear direction of what I’m building.",
+    side: "right",
+  },
             ].map((item, i) => {
               const isLeft = item.side === "left";
               const Icon = item.icon;
