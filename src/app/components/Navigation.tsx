@@ -10,6 +10,7 @@ export function Navigation() {
   const links = [
     { path: "/", label: "Home" },
     { path: "/about", label: "Author" },
+        { path: "/blog", label: "Writing" },
     { path: "/contact", label: "Hire me" },
   ];
 
@@ -19,11 +20,11 @@ export function Navigation() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent py-4">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent py-2 sm:py-3 md:py-4">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-12 sm:h-14 md:h-16">
           {/* LOGO */}
-          <Link to="/" className="group relative -ml-22">
+          <Link to="/" className="group relative -ml-4 sm:-ml-6 md:-ml-8 lg:-ml-22">
             <motion.div
               className="flex items-center"
               whileHover={{ scale: 1.05 }}
@@ -41,7 +42,7 @@ export function Navigation() {
                 <img
                   src={logo}
                   alt="Logo"
-                  className="h-22 w-auto object-contain"
+                  className="h-14 sm:h-16 md:h-18 lg:h-22 w-auto object-contain"
                 />
               </motion.div>
 
@@ -55,7 +56,7 @@ export function Navigation() {
           </Link>
 
           {/* LINKS + HAMBURGER */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
             <AnimatePresence>
               {isOpen && (
                 <motion.div
@@ -63,7 +64,7 @@ export function Navigation() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 20 }}
                   transition={{ duration: 0.3 }}
-                  className="flex items-center gap-6"
+                  className="flex items-center gap-3 sm:gap-4 md:gap-6"
                 >
                   {links.map((link, index) => (
                     <motion.div
@@ -76,7 +77,7 @@ export function Navigation() {
                         <a
                           href={link.path}
                           onClick={() => setIsOpen(false)}
-                          className="text-black hover:text-[#ff4500] transition"
+                          className="text-sm sm:text-base text-black hover:text-[#ff4500] transition"
                         >
                           {link.label}
                         </a>
@@ -84,7 +85,7 @@ export function Navigation() {
                         <Link
                           to={link.path}
                           onClick={() => setIsOpen(false)}
-                          className={`text-black hover:text-[#ff4500] transition ${
+                          className={`text-sm sm:text-base text-black hover:text-[#ff4500] transition ${
                             isActive(link.path) ? "text-[#ff4500]" : ""
                           }`}
                         >
@@ -102,19 +103,19 @@ export function Navigation() {
               onClick={() => {
                 setIsOpen(!isOpen);
               }}
-              className="w-10 h-10 flex flex-col justify-center items-center gap-1.5"
+              className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 flex flex-col justify-center items-center gap-1 sm:gap-1.5"
               whileTap={{ scale: 0.9 }}
             >
               <motion.span
-                className="w-6 h-[3px] bg-[#ff4500] rounded"
+                className="w-5 sm:w-6 h-[2.5px] sm:h-[3px] bg-[#ff4500] rounded"
                 animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
               />
               <motion.span
-                className="w-6 h-[3px] bg-[#ff4500] rounded"
+                className="w-5 sm:w-6 h-[2.5px] sm:h-[3px] bg-[#ff4500] rounded"
                 animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
               />
               <motion.span
-                className="w-6 h-[3px] bg-[#ff4500] rounded"
+                className="w-5 sm:w-6 h-[2.5px] sm:h-[3px] bg-[#ff4500] rounded"
                 animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
               />
             </motion.button>

@@ -75,16 +75,15 @@ export function Contact() {
     setLoading(false);
   };
 
-  /* === TEXT MEASURE FOR BORDER === */
   const textRef = useRef<HTMLDivElement>(null);
-  const [size, setSize] = useState({ width: 0, height: 0 });
+  const [textSize, setTextSize] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
     if (!textRef.current) return;
 
     const update = () => {
       const rect = textRef.current!.getBoundingClientRect();
-      setSize({ width: rect.width, height: rect.height });
+      setTextSize({ width: rect.width, height: rect.height });
     };
 
     update();
@@ -95,13 +94,33 @@ export function Contact() {
     return () => ro.disconnect();
   }, []);
 
+  const formRef = useRef<HTMLFormElement>(null);
+  const [formSize, setFormSize] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    if (!formRef.current) return;
+
+    const update = () => {
+      const rect = formRef.current!.getBoundingClientRect();
+      setFormSize({ width: rect.width, height: rect.height });
+    };
+
+    update();
+
+    const ro = new ResizeObserver(update);
+    ro.observe(formRef.current);
+
+    return () => ro.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen px-6 py-16 relative">
 
-      <div className="absolute top-40 right-16 w-20 h-20 opacity-30">
+      {/* Decorative circles */}
+      <div className="hidden md:block absolute top-40 right-16 w-20 h-20 opacity-30 pointer-events-none">
         <RoughCircle size={80} seed={110} />
       </div>
-      <div className="absolute bottom-32 left-24 w-24 h-24 opacity-25">
+      <div className="hidden md:block absolute bottom-32 left-24 w-24 h-24 opacity-25 pointer-events-none">
         <RoughCircle size={96} seed={120} />
       </div>
 
@@ -143,7 +162,6 @@ export function Contact() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-12 relative"
         >
-
           <h1 className="text-4xl font-semibold tracking-tight text-gray-900 dark:text-white relative z-10">
             Contact
           </h1>
@@ -166,32 +184,16 @@ export function Contact() {
         </motion.div>
 
         {/* TEXT BOX */}
-        <div className="relative inline-block mb-12 group">
-
-          {size.width > 0 && size.height > 0 && (
-            <div className="absolute inset-0 pointer-events-none transition-all duration-300 group-hover:scale-[1.02]">
-              <RoughBorder
-                width={size.width + 24}
-                height={size.height + 24}
-                roughness={1.8}
-                bowing={1.2}
-                seed={150}
-                stroke="#ff4500"
-                strokeWidth={2}
-                fill="transparent"
-              />
-            </div>
-          )}
+        <div className="relative mb-12 group">
 
           <motion.div
             ref={textRef}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="relative z-10 p-4 text-gray-900 dark:text-white max-w-md group-hover:text-[#ff4500] transition-colors duration-300"
+            className="relative z-10 p-4 text-base text-gray-900 dark:text-white group-hover:text-[#ff4500] transition-colors duration-300"
           >
             If you'd like to make an <span className="text-[#ff4500] font-semibold">enquiry</span>, please feel free to get in touch, and I will respond <span className="text-[#ff4500] font-semibold">as soon as possible</span>.
           </motion.div>
-
         </div>
 
         {/* FORM */}
@@ -199,28 +201,31 @@ export function Contact() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="relative p-8"
+          className="relative"
         >
-          <div className="absolute inset-0">
-            <RoughBorder
-              width={672}
-              height={480}
-              roughness={2}
-              bowing={1.5}
-              seed={170}
-              stroke="#ff4500"
-              strokeWidth={2}
-              fill="transparent"
-            />
-          </div>
+          {formSize.width > 0 && formSize.height > 0 && (
+            <div className="absolute inset-0 pointer-events-none">
+              <RoughBorder
+                width={formSize.width}
+                height={formSize.height}
+                roughness={2}
+                bowing={1.5}
+                seed={170}
+                stroke="#ff4500"
+                strokeWidth={2}
+                fill="transparent"
+              />
+            </div>
+          )}
 
           <form
+            ref={formRef}
             onSubmit={handleSubmit}
-            className="space-y-10 relative z-10"
+            className="space-y-10 relative z-10 p-8"
           >
             {/* NAME */}
             <div className="group">
-              <p className="text-xs mb-2 text-gray-500 flex items-center gap-2 group-hover:text-[#ff4500] transition">
+              <p className="text-xs mb-2 text-gray-500 dark:text-gray-400 flex items-center gap-2 group-hover:text-[#ff4500] transition">
                 <User size={12} />
                 Your name
               </p>
@@ -230,13 +235,13 @@ export function Contact() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full text-lg bg-transparent border-b border-gray-300 py-2 outline-none focus:border-[#ff4500] transition"
+                className="w-full text-lg bg-transparent border-b border-gray-300 dark:border-gray-600 py-2 text-gray-900 dark:text-white outline-none focus:border-[#ff4500] transition"
               />
             </div>
 
             {/* EMAIL */}
             <div className="group">
-              <p className="text-xs mb-2 text-gray-500 flex items-center gap-2 group-hover:text-[#ff4500] transition">
+              <p className="text-xs mb-2 text-gray-500 dark:text-gray-400 flex items-center gap-2 group-hover:text-[#ff4500] transition">
                 <Mail size={12} />
                 Your email
               </p>
@@ -246,31 +251,30 @@ export function Contact() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full text-lg bg-transparent border-b border-gray-300 py-2 outline-none focus:border-[#ff4500] transition"
+                className="w-full text-lg bg-transparent border-b border-gray-300 dark:border-gray-600 py-2 text-gray-900 dark:text-white outline-none focus:border-[#ff4500] transition"
               />
             </div>
 
             {/* MESSAGE */}
             <div className="group">
-              <p className="text-xs mb-2 text-gray-500 flex items-center gap-2 group-hover:text-[#ff4500] transition">
+              <p className="text-xs mb-2 text-gray-500 dark:text-gray-400 flex items-center gap-2 group-hover:text-[#ff4500] transition">
                 <MessageSquare size={12} />
                 Your message
               </p>
-
-<textarea
-  name="message"
-  value={formData.message}
-  onChange={handleChange}
-  required
-  rows={3}
-  className="w-full text-lg bg-transparent border-b border-gray-300 py-2 outline-none focus:border-[#ff4500] transition resize-none"
-/>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows={3}
+                className="w-full text-lg bg-transparent border-b border-gray-300 dark:border-gray-600 py-2 text-gray-900 dark:text-white outline-none focus:border-[#ff4500] transition resize-none"
+              />
             </div>
 
             {/* SUBMIT */}
             <div>
               <div className="relative inline-block group">
-                <div className="absolute inset-0 -m-2">
+                <div className="absolute inset-0 -m-2 pointer-events-none">
                   <RoughBorder 
                     width={130} 
                     height={48} 
@@ -292,7 +296,6 @@ export function Contact() {
                 </button>
               </div>
             </div>
-
           </form>
         </motion.div>
       </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { motion } from "motion/react";
 import { Link, useLocation } from "react-router";
 import logo from "./figma/Logo12.png";
@@ -8,105 +8,76 @@ export function Footer() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
-  // Sluit footer automatisch bij route verandering
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);
 
   return (
     <>
-      {/* Uitroepteken trigger */}
-      <motion.button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-4 right-4 z-50 w-10 h-10 bg-[#ff4500] text-black font-bold rounded-full shadow-xl flex items-center justify-center cursor-pointer"
-      >
-        <motion.span
-          key={isOpen ? "arrow" : "bang"} // belangrijk voor switch animatie
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{
-            scale: 1,
-            rotate: 0,
-            y: isOpen ? [0, 5, 0] : 0,
-          }}
-          transition={{
-            duration: 0.3,
-            y: { repeat: isOpen ? Infinity : 0, duration: 1 },
-          }}
-          exit={{ scale: 0 }}
-          className="text-lg"
-        >
-          {isOpen ? "↓" : "!"}
-        </motion.span>
-      </motion.button>
-
-      {/* ⚡ Uitklapbare dunne footer */}
+      {/* Trigger button */}
+<motion.button
+  onClick={() => setIsOpen(!isOpen)}
+  className="fixed bottom-3 right-3 z-50 w-9 h-9 sm:w-10 sm:h-10 bg-[#ff4500] text-white text-sm font-bold rounded-full shadow-md flex items-center justify-center"
+  whileHover={{ scale: 1.1 }}
+  whileTap={{ scale: 0.9 }}
+>
+  <motion.span
+    key={isOpen ? "arrow" : "bang"}
+    initial={{ y: -5, }}
+    animate={{
+      y: isOpen ? [0, 4, 0] : [0, -3, 0],
+      opacity: 1,
+      scale: 1,
+    }}
+    transition={{
+      duration: 1.2,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+    className="text-base sm:text-lg"
+  >
+    {isOpen ? "↓" : "!"}
+  </motion.span>
+</motion.button>
+      {/* Footer */}
       <motion.footer
         initial={{ y: "100%" }}
         animate={{ y: isOpen ? 0 : "100%" }}
-        transition={{ type: "spring", stiffness: 120, damping: 25 }}
-        className="fixed bottom-0 left-0 w-full bg-white/95 backdrop-blur-sm border-t border-[#ff4500]/20 z-40 pointer-events-auto"
-        style={{ height: "60px" }} // dunne hoogte
+        transition={{ type: "spring", stiffness: 140, damping: 22 }}
+        className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-200 z-40"
+        style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 h-full flex items-center justify-between">
-          <div>
-            <Link to="/" className="group">
-<motion.div
-  className="flex items-center"
-  whileHover={{ scale: 1.05 }}
-  transition={{ type: "spring", stiffness: 400 }}
->
-  <motion.div
-    className="relative flex items-center"
-    whileHover={{ scale: 1.08 }}
-    transition={{ type: "spring", stiffness: 300 }}
-  >
-    {/* glow effect */}
-    <div className="absolute inset-0 blur-lg opacity-0 bg-[#ff4500] rounded-full scale-50 transition duration-300 group-hover:opacity-30" />
+        <div className="max-w-7xl mx-auto px-3 py-2 flex items-center justify-between">
 
-    {/* logo */}
-    <img
-      src={logo}
-      alt="Logo"
-      className="h-17 w-auto object-contain"
-    />
-  </motion.div>
-</motion.div>
+          {/* Logo */}
+          <Link to="/" className="flex items-center">
+            <img src={logo} alt="Logo" className="h-8 sm:h-9 w-auto object-contain" />
+          </Link>
+
+          {/* Icons */}
+          <div className="flex items-center gap-3 sm:gap-4">
+            <a href="https://github.com/Jad-S" target="_blank" rel="noopener noreferrer"
+              className="text-gray-600 hover:text-[#ff4500] transition">
+              <Github size={18} />
+            </a>
+
+            <a href="https://www.linkedin.com/in/jad-s-365b00344/" target="_blank" rel="noopener noreferrer"
+              className="text-gray-600 hover:text-[#ff4500] transition">
+              <Linkedin size={18} />
+            </a>
+
+            <Link to="/contact"
+              className="text-gray-600 hover:text-[#ff4500] transition">
+              <Mail size={18} />
             </Link>
           </div>
 
-          {/* Social Media + copyright rechts */}
-          <div className="flex items-center gap-4">
-            {[
-              { icon: <Github size={24} />, link: "https://github.com/Jad-S" },
-              {
-                icon: <Linkedin size={24} />,
-                link: "https://www.linkedin.com/in/jad-s-365b00344/",
-              },
-              { icon: <Mail size={24} />, link: "/contact" },
-            ].map((item, i) => (
-              <a
-                key={i}
-                href={item.link}
-                target={item.link.startsWith("http") ? "_blank" : undefined}
-                rel={
-                  item.link.startsWith("http")
-                    ? "noopener noreferrer"
-                    : undefined
-                }
-                className="text-black-400 hover:text-[#ff4500] transition-all duration-300 hover:scale-125"
-              >
-                {item.icon}
-              </a>
-            ))}
-
-            {/* Klein copyright */}
-            <span className="text-black-400 text-xs select-none">© 2026</span>
-          </div>
+          {/* Copyright */}
+          <span className="text-[10px] sm:text-xs text-gray-400 select-none">
+            © 2026
+          </span>
         </div>
       </motion.footer>
-
-      {/* Spacer zodat content niet overlapt met footer */}
-      <div style={{ height: "60px" }} />
     </>
   );
 }

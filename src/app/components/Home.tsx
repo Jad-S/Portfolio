@@ -1,7 +1,6 @@
 import { motion } from "motion/react";
 import { Link } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { TypewriterText } from "./TypewriterText";
 import { Projects } from "./Projects";
 import RoughBorder from "./RoughBorder";
 import { useEffect, useRef, useState } from "react";
@@ -50,34 +49,34 @@ export function Home() {
   return (
     <div className="relative">
       {/* HERO SECTION */}
-      <section className="min-h-[90vh] flex items-center justify-center px-4 py-20">
+      <section className="min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20">
         <div className="max-w-7xl mx-auto w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
             {/* LEFT */}
             <motion.div
-              className="lg:ml-16"
+              className="lg:ml-8 xl:ml-16 text-center lg:text-left"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
               {/* Decorative rough circles around text */}
               <div className="relative">
-                <div className="absolute -top-8 -left-8 w-20 h-20 z-0 opacity-40">
+                <div className="hidden md:block absolute -top-8 -left-8 w-20 h-20 z-0 opacity-40">
                   {/* <RoughCircle size={80} seed={30} /> */}
                 </div>
-                <div className="absolute -bottom-6 -right-4 w-16 h-16 z-0 opacity-30">
+                <div className="hidden md:block absolute -bottom-6 -right-4 w-16 h-16 z-0 opacity-30">
                   {/* <RoughCircle size={64} seed={40} /> */}
                 </div>
 
                 <motion.h1
-                  className="text-5xl sm:text-7xl font-bold text-gray-900 dark:text-white mb-3 relative z-10"
+                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-3 relative z-10"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <span className="block text-gray-900 dark:text-white mt-2 text-l">
+                  <span className="block text-black dark:text-white text-base sm:text-xl md:text-7xl">
                     Hi, my name
-                    <span className="block mt-6 font-bold">
+                    <span className="block mt-4 sm:mt-6 font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
                       is<span className="text-[#ff4500]"> Jad</span>.
                     </span>
                   </span>
@@ -86,7 +85,7 @@ export function Home() {
 
               <br />
 
-              <h1 className="text-xl text-gray-800 dark:text-gray-100 mb-8">
+              <h1 className="text-base sm:text-lg md:text-xl text-black dark:text-gray-100 mb-6 sm:mb-8 px-4 lg:px-0">
                 I am 20 years old and a{" "}
                 <span className="font-bold text-[#ff4500]">
                   third-year software development student
@@ -115,7 +114,7 @@ export function Home() {
                   </div>
                   <Link
                     to="/about"
-                    className="relative z-10 text-lg text-gray-900 dark:text-white group-hover:text-[#ff4500] transition-colors px-4 py-1 inline-block"
+                    className="relative z-10 text-base sm:text-lg text-gray-900 dark:text-white group-hover:text-[#ff4500] transition-colors px-4 py-1 inline-block"
                   >
                     Learn More...
                   </Link>
@@ -135,17 +134,17 @@ export function Home() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
+              className="relative order-first lg:order-last"
             >
-              <div className="w-full max-w-md mx-auto">
+              <div className="w-full max-w-sm sm:max-w-md mx-auto">
 
                 {/* Image with rough border */}
                 <div className="relative">
                   {/* Decorative rough circles around image */}
-                  <div className="absolute -top-10 -right-8 w-24 h-24 z-0">
+                  <div className="absolute -top-6 sm:-top-8 md:-top-10 -right-4 sm:-right-6 md:-right-8 w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 z-0">
                     <RoughCircle size={96} seed={60} />
                   </div>
-                  <div className="absolute -bottom-8 -left-6 w-20 h-20 z-0 opacity-50">
+                  <div className="absolute -bottom-4 sm:-bottom-6 md:-bottom-8 -left-3 sm:-left-4 md:-left-6 w-14 sm:w-16 md:w-20 h-14 sm:h-16 md:h-20 z-0 opacity-50">
                     <RoughCircle size={80} seed={70} />
                   </div>
 
@@ -165,9 +164,9 @@ export function Home() {
       </section>
 
       {/* Scroll Indicator */}
-      <div className="flex flex-col items-center my-12">
-        <div className="text-[#ff4500] text-sm tracking-[0.3em] mb-4">S C R O L L</div>
-        <div className="relative w-[2px] h-40 bg-gray-300 dark:bg-gray-700">
+      <div className="flex flex-col items-center my-8 sm:my-10 md:my-12">
+        <div className="text-[#ff4500] text-xs sm:text-sm tracking-[0.3em] mb-4">S C R O L L</div>
+        <div className="relative w-[2px] h-32 sm:h-36 md:h-40 bg-gray-300 dark:bg-gray-700">
           <motion.div 
             className="absolute top-0 left-0 w-full bg-[#ff4500]"
             style={{ height: `${scrollProgress}%` }}

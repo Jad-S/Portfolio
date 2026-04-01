@@ -1,7 +1,6 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect, useRef } from "react";
 import { Link, useParams } from "react-router";
-import { SiSharp, SiReact, SiMysql, SiTailwindcss } from "react-icons/si";
 import {
   ChevronLeft,
   ChevronRight,
@@ -9,6 +8,7 @@ import {
   ArrowRight,
   Play,
   Github,
+  X,
 } from "lucide-react";
 
 import RoughBorder from "./RoughBorder";
@@ -54,7 +54,6 @@ export function ProjectDetails() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ w: 0, h: 0 });
   
-
   const totalProjects = projects.length;
 
   const nextProject = () => {
@@ -68,14 +67,14 @@ export function ProjectDetails() {
   };
 
   const nextScreenshot = () => {
-    setDirection(Math.random() > 0.5 ? "left" : "right");
+    setDirection("right");
     setCurrentScreenshot((prev) =>
       prev === project.screenshots.length - 1 ? 0 : prev + 1,
     );
   };
 
   const prevScreenshot = () => {
-    setDirection(Math.random() > 0.5 ? "left" : "right");
+    setDirection("left");
     setCurrentScreenshot((prev) =>
       prev === 0 ? project.screenshots.length - 1 : prev - 1,
     );
@@ -115,7 +114,7 @@ export function ProjectDetails() {
 
   const variants = {
     enter: (dir: "left" | "right") => ({
-      x: dir === "left" ? window.innerWidth : -window.innerWidth,
+      x: dir === "left" ? -300 : 300,
       opacity: 0,
     }),
     center: {
@@ -123,37 +122,35 @@ export function ProjectDetails() {
       opacity: 1,
     },
     exit: (dir: "left" | "right") => ({
-      x: dir === "left" ? -window.innerWidth : window.innerWidth,
+      x: dir === "left" ? 300 : -300,
       opacity: 0,
     }),
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center py-16 px-4 relative">
+    <div className="min-h-screen flex items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-6 relative overflow-x-hidden">
       
-      {/* Decorative rough circles */}
-      <div className="absolute top-32 left-12 w-24 h-24 opacity-20">
+      {/* Decorative rough circles - Hidden on mobile */}
+      <div className="hidden xl:block absolute top-32 left-12 w-24 h-24 opacity-20 pointer-events-none">
         <RoughCircle size={96} seed={300} />
       </div>
-      <div className="absolute top-48 right-20 w-32 h-32 opacity-15">
+      <div className="hidden xl:block absolute top-48 right-20 w-32 h-32 opacity-15 pointer-events-none">
         <RoughCircle size={128} seed={310} />
       </div>
-      <div className="absolute bottom-32 left-32 w-20 h-20 opacity-25">
+      <div className="hidden xl:block absolute bottom-32 left-32 w-20 h-20 opacity-25 pointer-events-none">
         <RoughCircle size={80} seed={320} />
       </div>
-      <div className="absolute bottom-48 right-16 w-28 h-28 opacity-20">
+      <div className="hidden xl:block absolute bottom-48 right-16 w-28 h-28 opacity-20 pointer-events-none">
         <RoughCircle size={112} seed={330} />
       </div>
 
-      {/* 🔥 ZOOM WRAPPER */}
-      <div style={{ transform: "scale(0.9)", transformOrigin: "top center", width: "100%" }}>
-        
-        {/* ✅ CENTERED CONTAINER */}
-        <div ref={containerRef} className="relative w-full max-w-[1400px] mx-auto">
+      {/* Main Container */}
+      <div className="w-full max-w-6xl mx-auto">
+        <div ref={containerRef} className="relative w-full">
           
-          {/* ROUGH BORDER */}
-          <div className="absolute inset-0 z-0 pointer-events-none">
-            {size.w > 0 && size.h > 0 && (
+          {/* ROUGH BORDER - Responsive */}
+          {size.w > 0 && size.h > 0 && (
+            <div className="absolute inset-0 z-0 pointer-events-none">
               <RoughBorder 
                 width={size.w} 
                 height={size.h}
@@ -162,16 +159,15 @@ export function ProjectDetails() {
                 stroke="#ff4500"
                 strokeWidth={3}
               />
-            )}
-          </div>
+            </div>
+          )}
 
-          {/* CONTENT */}
-          <div className="relative z-10 bg-white px-6 lg:px-16 py-24 rotate-[0.4deg]">
-
-            <div className="absolute top-8 right-[48px] z-20 w-10 h-10">
-              <div className="relative w-full h-full flex items-center justify-center group -ml-15">
-                
-                {/* ROUGH BORDER */}
+          {/* CONTENT - White background */}
+          <div className="relative z-10 bg-white p-6 sm:p-8 lg:p-16 rotate-[0.4deg]">
+            
+            {/* Close button - Top right */}
+<div className="absolute top-4 right-4 sm:top-6 sm:right-6 lg:top-8 lg:right-8 z-20 w-10 h-10 -translate-y-2 sm:translate-y-0">
+                <div className="relative w-full h-full flex items-center justify-center group">
                 <RoughBorder 
                   width={40} 
                   height={40}
@@ -181,39 +177,27 @@ export function ProjectDetails() {
                   stroke="#ff4500"
                   strokeWidth={2}
                 />
-
-                {/* BUTTON */}
                 <Link
                   to="/"
                   className="absolute inset-0 flex items-center justify-center z-10"
                 >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
+                  <X 
+                    size={16} 
                     className="transition-all duration-200 group-hover:scale-110 group-hover:text-[#ff4500]"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <line x1="18" y1="6" x2="6" y2="18" />
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg>
+                  />
                 </Link>
-
               </div>
             </div>
 
-            <div className="grid lg:grid-cols-12 gap-16 items-start">
-
-              {/* LEFT */}
-              <div className="lg:col-span-7">
+            {/* Content grid - Stack on mobile, side-by-side on desktop */}
+            <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-12 xl:gap-16 mt-8 sm:mt-0">
+              
+              {/* LEFT COLUMN - Image Gallery */}
+              <div className="lg:col-span-7 w-full">
+                
                 {/* MAIN IMAGE */}
-                <div className="relative aspect-[16/10] overflow-hidden group">
-                  {/* Decorative circles around image */}
-
-
-                  <AnimatePresence mode="sync" custom={direction}>
+                <div className="relative w-full aspect-[16/10] overflow-hidden bg-gray-100">
+                  <AnimatePresence mode="wait" custom={direction}>
                     <motion.div
                       key={currentScreenshot}
                       custom={direction}
@@ -222,9 +206,8 @@ export function ProjectDetails() {
                       animate="center"
                       exit="exit"
                       transition={{
-                        type: "spring",
-                        stiffness: 260,
-                        damping: 30,
+                        x: { type: "spring", stiffness: 300, damping: 30 },
+                        opacity: { duration: 0.2 }
                       }}
                       className="absolute inset-0"
                     >
@@ -236,35 +219,35 @@ export function ProjectDetails() {
                   </AnimatePresence>
                 </div>
 
-                {/* THUMBNAILS */}
-                <div className="mt-6 flex items-center gap-2">
+                {/* THUMBNAILS ROW */}
+                <div className="mt-4 flex items-center gap-2 w-full">
+                  {/* Left arrow */}
+                  <div className="relative w-8 h-16 flex items-center justify-center flex-shrink-0">
+                    <RoughBorder width={32} height={64} bowing={0} roughness={1} />
+                    <button
+                      onClick={prevScreenshot}
+                      className="absolute inset-0 flex items-center justify-center z-10 hover:text-[#ff4500] transition"
+                      aria-label="Previous screenshot"
+                    >
+                      <ChevronLeft size={18} />
+                    </button>
+                  </div>
 
-<div className="relative w-6 h-[80px] flex items-center justify-center">
-  <RoughBorder width={24} height={80}    bowing={0}
-  roughness={1}/>
-
-  <button
-    onClick={prevScreenshot}
-    className="absolute inset-0 flex items-center justify-center z-10"
-  >
-    <ChevronLeft size={18} />
-  </button>
-</div>
-
+                  {/* Thumbnails container - scrollable */}
                   <div
                     ref={thumbnailRef}
-                    className="flex gap-3 overflow-x-auto scrollbar-hide"
+                    className="flex-1 flex gap-2 overflow-x-auto scrollbar-hide"
+                    style={{ scrollBehavior: 'smooth' }}
                   >
                     {project.screenshots.map((img, index) => (
                       <button
                         key={index}
                         onClick={() => setCurrentScreenshot(index)}
-                        className={`min-w-[110px] h-[80px] overflow-hidden border transition duration-300
-                          ${
-                            currentScreenshot === index
-                              ? "border-[#ff4500] scale-105"
-                              : "border-transparent opacity-60 hover:opacity-100"
-                          }`}
+                        className={`min-w-[80px] w-[80px] h-[60px] overflow-hidden border-2 transition-all duration-300 flex-shrink-0 ${
+                          currentScreenshot === index
+                            ? "border-[#ff4500] scale-105 shadow-lg"
+                            : "border-gray-300 opacity-60 hover:opacity-100 hover:border-[#ff4500]"
+                        }`}
                       >
                         <ImageWithFallback
                           src={img}
@@ -274,46 +257,40 @@ export function ProjectDetails() {
                     ))}
                   </div>
 
-                  <div className="relative w-6 h-[80px] flex items-center justify-center">
-                    <RoughBorder width={24} height={80}   bowing={0}
-  roughness={1} />
-<button
-  onClick={nextScreenshot}
-  className="absolute inset-0 flex items-center justify-center"
->
-  <ChevronRight className="block mx-auto" size={20} />
-</button>
+                  {/* Right arrow */}
+                  <div className="relative w-8 h-16 flex items-center justify-center flex-shrink-0">
+                    <RoughBorder width={32} height={64} bowing={0} roughness={1} />
+                    <button
+                      onClick={nextScreenshot}
+                      className="absolute inset-0 flex items-center justify-center z-10 hover:text-[#ff4500] transition"
+                      aria-label="Next screenshot"
+                    >
+                      <ChevronRight size={18} />
+                    </button>
                   </div>
-
                 </div>
               </div>
 
-              {/* RIGHT */}
-              <div className="lg:col-span-5 flex flex-col justify-between">
-                <div className="relative">
-                  {/* Decorative circle near title */}
+              {/* RIGHT COLUMN - Project Info */}
+              <div className="lg:col-span-5 w-full flex flex-col">
+                
+                {/* Title */}
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light text-[#ff4500] mb-4 lg:mb-6 leading-tight break-words">
+                  {project.title}
+                  <span className="text-black">.</span>
+                </h1>
 
+                {/* Description */}
+                <p className="text-sm sm:text-base lg:text-lg text-gray-700 leading-relaxed mb-6 break-words">
+                  {project.about}
+                </p>
 
-                  <motion.h1
-                    className="text-[#ff4500] font-light mb-8 leading-tight relative z-10"
-                    style={{
-                      fontSize: "clamp(2rem, 3.5vw, 4.5rem)",
-                    }}
-                  >
-                    {project.title}
-                    <span className="text-black">.</span>
-                  </motion.h1>
-
-                  <p className="text-black-600 text-lg leading-relaxed max-w-lg mb-6 whitespace-pre-line">
-                    {project.about}
-                  </p>
-                </div>
-
-                <div className="flex gap-3 items-center mt-4 flex-wrap">
+                {/* Technologies */}
+                <div className="flex gap-3 items-center mb-8 flex-wrap">
                   {project.technologies?.map((Icon, index) => (
                     <div
                       key={index}
-                      className="relative w-12 h-12 group"
+                      className="relative w-12 h-12 group flex-shrink-0"
                     >
                       <RoughCircle size={48} seed={380 + index * 5} />
                       <div className="absolute inset-0 flex items-center justify-center">
@@ -326,79 +303,78 @@ export function ProjectDetails() {
                   ))}
                 </div>
 
-                {/* BUTTONS */}
-                <div className="mt-16 flex flex-col gap-8">
+                {/* Links */}
+                <div className="flex gap-4 sm:gap-6 mb-8 flex-wrap">
+                  {project.links.live && (
+                    <a
+                      href="#"
+                      onClick={(e) => e.preventDefault()}
+                      className="inline-flex items-center gap-2 text-xs sm:text-sm uppercase tracking-widest border-b border-black/30 opacity-50 cursor-not-allowed"
+                    >
+                      <Play size={14} />
+                      Launch (down)
+                    </a>
+                  )}
 
-                  <div className="flex gap-6 flex-wrap">
-                    {project.links.live && (
-                      <a
-                        href="#"
-                        onClick={(e) => e.preventDefault()}
-                        className="inline-flex items-center gap-2 text-sm uppercase tracking-widest border-b border-black/30 opacity-50 cursor-not-allowed pointer-events-none"
-                      >
-                        <Play size={16} />
-                        Launch (website is currently down...SORRY)
-                      </a>
-                    )}
+                  {project.links.github && (
+                    <a
+                      href={project.links.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-xs sm:text-sm uppercase tracking-widest border-b border-black/30 hover:border-[#ff4500] transition"
+                    >
+                      <Github size={14} />
+                      Code
+                    </a>
+                  )}
+                </div>
 
-                    {project.links.github && (
-                      <a
-                        href={project.links.github}
-                        target="_blank"
-                        className="inline-flex items-center gap-2 text-sm uppercase tracking-widest border-b border-black/30 hover:border-[#ff4500] transition"
-                      >
-                        <Github size={16} />
-                        Code
-                      </a>
-                    )}
-                  </div>
+                {/* Navigation - Project counter and arrows */}
+                <div className="mt-auto pt-6">
+                  <div className="flex items-center justify-center gap-8">
+                    
+                    {/* Counter */}
+                    <span className="text-sm tracking-widest text-gray-600">
+                      {projectIndex + 1} / {totalProjects}
+                    </span>
 
-                  {/* NAV */}
-                  <div className="flex justify-center mt-6">
-                    <div className="flex items-center gap-10">
-
-                      <span className="text-sm tracking-widest text-black-400">
-                        {projectIndex + 1} / {totalProjects}
-                      </span>
-
-                      <div className="flex items-center gap-6">
-                        <div className="relative w-12 h-12 flex items-center justify-center">
-                          <RoughBorder width={48} height={48} />
-
-                          <button
-                            onClick={prevProject}
-                            className="absolute inset-0 flex items-center justify-center group"
-                          >
-                            <ArrowLeft
-                              size={28}
-                              className="text-black-400 group-hover:text-[#ff4500] transition-all duration-200 group-hover:scale-110"
-                            />
-                          </button>
-                        </div>
-
-                        <div className="relative w-12 h-12 flex items-center justify-center">
-                          <RoughBorder width={48} height={48} />
-
-                          <button
-                            onClick={nextProject}
-                            className="absolute inset-0 flex items-center justify-center group"
-                          >
-                            <ArrowRight
-                              size={28}
-                              className="text-black-400 group-hover:text-[#ff4500] transition-all duration-200 group-hover:scale-110"
-                            />
-                          </button>
-                        </div>
+                    {/* Navigation arrows */}
+                    <div className="flex items-center gap-4">
+                      {/* Previous project */}
+                      <div className="relative w-12 h-12 flex items-center justify-center">
+                        <RoughBorder width={48} height={48} />
+                        <button
+                          onClick={prevProject}
+                          className="absolute inset-0 flex items-center justify-center group"
+                          aria-label="Previous project"
+                        >
+                          <ArrowLeft
+                            size={24}
+                            className="text-gray-600 group-hover:text-[#ff4500] transition-all duration-200 group-hover:scale-110"
+                          />
+                        </button>
                       </div>
 
+                      {/* Next project */}
+                      <div className="relative w-12 h-12 flex items-center justify-center">
+                        <RoughBorder width={48} height={48} />
+                        <button
+                          onClick={nextProject}
+                          className="absolute inset-0 flex items-center justify-center group"
+                          aria-label="Next project"
+                        >
+                          <ArrowRight
+                            size={24}
+                            className="text-gray-600 group-hover:text-[#ff4500] transition-all duration-200 group-hover:scale-110"
+                          />
+                        </button>
+                      </div>
                     </div>
                   </div>
-
                 </div>
+
               </div>
-
             </div>
-
           </div>
         </div>
       </div>
