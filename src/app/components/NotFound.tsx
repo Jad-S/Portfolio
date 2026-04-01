@@ -16,7 +16,7 @@ export function NotFound() {
           Page Not Found
         </h2>
 
-        <p className="text-gray-300 light:text-gray-700 mb-8 max-w-md mx-auto">
+        <p className="text-black light:text-gray-700 mb-8 max-w-md mx-auto">
           The page you are looking for does not exist or has been moved.
         </p>
 
