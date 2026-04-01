@@ -52,19 +52,19 @@ export function Contact() {
     setLoading(true);
 
     try {
-      const response = await fetch("https://formspree.io/f/mrbqkxyz", {
+      const response = await fetch("https://formspree.io/f/mnjoqezq", {
         method: "POST",
         headers: {
           Accept: "application/json",
         },
-        body: new FormData(e.target as HTMLFormElement), // 👈 belangrijk voor Formspree
+        body: new FormData(e.target as HTMLFormElement),
       });
 
       if (response.ok) {
         setShowToast(true);
         setFormData({ name: "", email: "", message: "" });
 
-        setTimeout(() => setShowToast(false), 4000);
+        setTimeout(() => setShowToast(false), 2000);
       } else {
         alert("Er ging iets mis. Probeer opnieuw.");
       }
