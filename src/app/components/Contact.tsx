@@ -76,10 +76,6 @@ export function Contact() {
   return (
     <div className="min-h-screen px-6 py-16 relative">
 
-      {/* Decorative rough circles */}
-      <div className="absolute top-20 left-10 w-32 h-32 opacity-20">
-        <RoughCircle size={128} seed={100} />
-      </div>
       <div className="absolute top-40 right-16 w-20 h-20 opacity-30">
         <RoughCircle size={80} seed={110} />
       </div>
@@ -173,7 +169,7 @@ export function Contact() {
             animate={{ opacity: 1, y: 0 }}
             className="relative z-10 p-4 text-gray-900 dark:text-white max-w-md group-hover:text-[#ff4500] transition-colors duration-300"
           >
-            If you'd like to make an enquiry, please feel free to get in touch, and I will respond as soon as possible.
+            If you'd like to make an <span className="text-[#ff4500] font-semibold">enquiry</span>, please feel free to get in touch, and I will respond <span className="text-[#ff4500] font-semibold">as soon as possible</span>.
           </motion.div>
 
         </div>

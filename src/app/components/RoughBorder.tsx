@@ -60,5 +60,5 @@ export default function RoughBorder({
 
   }, [width, height, strokeWidth, roughness, bowing, seed, stroke, fill]);
 
-  return <svg ref={svgRef} width={width} height={height} className="absolute inset-0" />;
+  return <svg ref={svgRef} width={width} height={height}     className="absolute inset-0 pointer-events-none" />;
 }

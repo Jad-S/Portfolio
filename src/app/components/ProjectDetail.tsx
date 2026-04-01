@@ -239,15 +239,17 @@ export function ProjectDetails() {
                 {/* THUMBNAILS */}
                 <div className="mt-6 flex items-center gap-2">
 
-                  <div className="relative w-6 h-[80px] flex items-center justify-center">
-                    <RoughBorder width={24} height={80} />
-                    <button
-                      onClick={prevScreenshot}
-                      className="absolute inset-0 flex items-center justify-center"
-                    >
-                      <ChevronLeft size={18} />
-                    </button>
-                  </div>
+<div className="relative w-6 h-[80px] flex items-center justify-center">
+  <RoughBorder width={24} height={80}    bowing={0}
+  roughness={1}/>
+
+  <button
+    onClick={prevScreenshot}
+    className="absolute inset-0 flex items-center justify-center z-10"
+  >
+    <ChevronLeft size={18} />
+  </button>
+</div>
 
                   <div
                     ref={thumbnailRef}
@@ -273,13 +275,14 @@ export function ProjectDetails() {
                   </div>
 
                   <div className="relative w-6 h-[80px] flex items-center justify-center">
-                    <RoughBorder width={24} height={80} />
-                    <button
-                      onClick={nextScreenshot}
-                      className="absolute inset-0 flex items-center justify-center"
-                    >
-                      <ChevronRight size={18} />
-                    </button>
+                    <RoughBorder width={24} height={80}   bowing={0}
+  roughness={1} />
+<button
+  onClick={nextScreenshot}
+  className="absolute inset-0 flex items-center justify-center"
+>
+  <ChevronRight className="block mx-auto" size={18} />
+</button>
                   </div>
 
                 </div>
