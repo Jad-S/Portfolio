@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "motion/react";
-import { Mail, MessageSquare, Phone, Send } from "lucide-react";
+import { User, Mail, MessageSquare, Send } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import RoughBorder from "./RoughBorder";
 import rough from "roughjs";
@@ -36,6 +36,7 @@ export function Contact() {
   });
 
   const [showToast, setShowToast] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -46,11 +47,32 @@ export function Contact() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setShowToast(true);
-    setTimeout(() => setShowToast(false), 4000);
-    setFormData({ name: "", email: "", message: "" });
+    setLoading(true);
+
+    try {
+      const response = await fetch("https://formspree.io/f/mrbqkxyz", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: new FormData(e.target as HTMLFormElement), // 👈 belangrijk voor Formspree
+      });
+
+      if (response.ok) {
+        setShowToast(true);
+        setFormData({ name: "", email: "", message: "" });
+
+        setTimeout(() => setShowToast(false), 4000);
+      } else {
+        alert("Er ging iets mis. Probeer opnieuw.");
+      }
+    } catch (error) {
+      alert("Netwerk fout. Probeer opnieuw.");
+    }
+
+    setLoading(false);
   };
 
   /* === TEXT MEASURE FOR BORDER === */
@@ -143,10 +165,9 @@ export function Contact() {
           </motion.div>
         </motion.div>
 
-        {/* FIXED TEXT BOX */}
+        {/* TEXT BOX */}
         <div className="relative inline-block mb-12 group">
 
-          {/* Border */}
           {size.width > 0 && size.height > 0 && (
             <div className="absolute inset-0 pointer-events-none transition-all duration-300 group-hover:scale-[1.02]">
               <RoughBorder
@@ -162,7 +183,6 @@ export function Contact() {
             </div>
           )}
 
-          {/* Text */}
           <motion.div
             ref={textRef}
             initial={{ opacity: 0, y: 10 }}
@@ -195,15 +215,13 @@ export function Contact() {
           </div>
 
           <form
-            action="https://formspree.io/f/mrbqkxyz"
-            method="POST"
             onSubmit={handleSubmit}
             className="space-y-10 relative z-10"
           >
             {/* NAME */}
             <div className="group">
               <p className="text-xs mb-2 text-gray-500 flex items-center gap-2 group-hover:text-[#ff4500] transition">
-                <Mail size={12} />
+                <User size={12} />
                 Your name
               </p>
               <input
@@ -219,7 +237,7 @@ export function Contact() {
             {/* EMAIL */}
             <div className="group">
               <p className="text-xs mb-2 text-gray-500 flex items-center gap-2 group-hover:text-[#ff4500] transition">
-                <Phone size={12} />
+                <Mail size={12} />
                 Your email
               </p>
               <input
@@ -233,25 +251,24 @@ export function Contact() {
             </div>
 
             {/* MESSAGE */}
-{/* MESSAGE */}
-<div className="group">
-  <p className="text-xs mb-2 text-gray-500 flex items-center gap-2 group-hover:text-[#ff4500] transition">
-    <MessageSquare size={12} />
-    Your message
-  </p>
+            <div className="group">
+              <p className="text-xs mb-2 text-gray-500 flex items-center gap-2 group-hover:text-[#ff4500] transition">
+                <MessageSquare size={12} />
+                Your message
+              </p>
 
-  <textarea
-    name="message"
-    value={formData.message}
-    onChange={handleChange}
-    required
-    rows={3}
-    className="w-full text-lg bg-transparent border-b border-gray-300 py-2 outline-none focus:border-[#ff4500] transition"
-  />
-</div>
+<textarea
+  name="message"
+  value={formData.message}
+  onChange={handleChange}
+  required
+  rows={3}
+  className="w-full text-lg bg-transparent border-b border-gray-300 py-2 outline-none focus:border-[#ff4500] transition resize-none"
+/>
+            </div>
 
             {/* SUBMIT */}
-<div>
+            <div>
               <div className="relative inline-block group">
                 <div className="absolute inset-0 -m-2">
                   <RoughBorder 
@@ -267,13 +284,15 @@ export function Contact() {
                 </div>
                 <button
                   type="submit"
+                  disabled={loading}
                   className="relative z-10 text-gray-900 dark:text-white text-base group-hover:text-[#ff4500] transition flex items-center gap-2 px-4 py-1"
                 >
-                  Send
+                  {loading ? "Sending..." : "Send"}
                   <Send size={14} className="group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
+
           </form>
         </motion.div>
       </div>

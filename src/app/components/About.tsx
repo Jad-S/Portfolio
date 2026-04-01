@@ -119,10 +119,7 @@ export function About() {
               <span className="text-[#ff4500]">.</span>
               <span className="text-[#ff4500]">.</span>
             </h1>
-            {/* Decorative rough circles */}
-            <div className="absolute -top-4 -right-12 w-16 h-16 z-0">
-              <RoughCircle size={64} seed={10} />
-            </div>
+
             <div className="absolute -bottom-2 left-0 w-12 h-12 z-0 opacity-50">
               <RoughCircle size={48} seed={20} />
             </div>
@@ -138,7 +135,7 @@ export function About() {
             viewport={{ once: true }}
             className="relative max-w-4xl mx-auto"
           >
-            <div className="relative p-12">
+            <div className="relative p-12 py-7">
               <div className="absolute inset-0">
                 <RoughBorder 
                   width={896} 

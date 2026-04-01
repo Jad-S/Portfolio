@@ -169,7 +169,7 @@ export function ProjectDetails() {
           <div className="relative z-10 bg-white px-6 lg:px-16 py-24 rotate-[0.4deg]">
 
             <div className="absolute top-8 right-[48px] z-20 w-10 h-10">
-              <div className="relative w-full h-full flex items-center justify-center group">
+              <div className="relative w-full h-full flex items-center justify-center group -ml-15">
                 
                 {/* ROUGH BORDER */}
                 <RoughBorder 
