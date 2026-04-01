@@ -341,16 +341,6 @@ function TechCard({ item, isLeft, Icon, index }: any) {
         <div className="relative w-full max-w-[90vw] sm:max-w-[400px] group hover:scale-105 transition-transform duration-300">
           {cardSize.width > 0 && cardSize.height > 0 && (
             <div className="absolute inset-0 pointer-events-none">
-              <RoughBorder
-                width={cardSize.width}
-                height={cardSize.height}
-                strokeWidth={2.5}
-                roughness={2}
-                bowing={1}
-                seed={300 + index * 10}
-                stroke="#ff4500"
-                fill="transparent"
-              />
             </div>
           )}
 
