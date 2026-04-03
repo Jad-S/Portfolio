@@ -118,10 +118,10 @@ export function About() {
       <br />
       <br />
       <div className="flex flex-col items-center my-8 sm:my-12">
-        <div className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm tracking-[0.3em] mb-4">
+        <div className="text-black dark:text-black text-xs sm:text-sm tracking-[0.3em] mb-4">
           S C R O L L
         </div>
-        <div className="relative w-[2px] h-32 sm:h-40 bg-gray-300 dark:bg-gray-700">
+        <div className="relative w-[2px] h-32 sm:h-40 bg-black dark:bg-black">
           <motion.div
             className="absolute top-0 left-0 w-full bg-[#ff4500]"
             style={{ height: `${scrollProgress}%` }}
@@ -157,7 +157,7 @@ export function About() {
           className="text-left mb-12 sm:mb-16 md:mb-20"
         >
           <div className="relative inline-block">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white mb-4 ml-2 sm:ml-4 relative z-10">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-black dark:text-white mb-4 ml-2 sm:ml-4 relative z-10">
               About me
               <span className="text-[#ff4500]">.</span>
               <span className="text-[#ff4500]">.</span>
@@ -198,7 +198,7 @@ export function About() {
                 ref={textBoxRef}
                 className="p-4 sm:p-6 md:p-8 lg:p-12 py-4 sm:py-5 md:py-6 lg:py-7"
               >
-                <motion.p className="text-gray-800 dark:text-gray-100 text-sm sm:text-base lg:text-lg leading-relaxed relative z-10">
+                <motion.p className="text-black dark:text-black text-sm sm:text-base lg:text-lg leading-relaxed relative z-10">
                   {fullText}
                 </motion.p>
               </div>
@@ -220,13 +220,13 @@ export function About() {
 
         {/* Decorative divider */}
         <div className="relative my-12 sm:my-16 md:my-20">
-          <div className="w-full h-[2px] bg-gray-300 dark:bg-gray-700" />
+          <div className="w-full h-[2px] bg-black dark:bg-black" />
         </div>
 
         {/* Tech & Languages Timeline */}
         <div className="mb-12 sm:mb-16 md:mb-20 max-w-5xl mx-auto relative">
           <motion.h2
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-12 sm:mb-16 md:mb-20 text-center"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-black dark:text-white mb-12 sm:mb-16 md:mb-20 text-center"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -235,7 +235,7 @@ export function About() {
           </motion.h2>
 
           {/* Center timeline line - Hidden on mobile, visible on tablet+ */}
-          <div className="hidden md:block absolute left-1/2 top-16 sm:top-20 md:top-24 h-[calc(100%-100px)] w-[3px] bg-gray-300 dark:bg-gray-700 -translate-x-1/2" />
+          <div className="hidden md:block absolute left-1/2 top-16 sm:top-20 md:top-24 h-[calc(100%-100px)] w-[3px] bg-black dark:bg-black -translate-x-1/2" />
 
           <div className="space-y-12 sm:space-y-20 md:space-y-32">
             {[
@@ -357,11 +357,11 @@ function TechCard({ item, isLeft, Icon, index }: any) {
             </div>
 
             {/* Title */}
-            <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-3">
+            <h3 className="text-base sm:text-lg md:text-xl font-bold text-black dark:text-white mb-2 sm:mb-3">
               {item.title}
             </h3>
 
-            <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-xs sm:text-sm">
+            <p className="text-black dark:text-black leading-relaxed text-xs sm:text-sm">
               {item.text}
             </p>
           </div>
