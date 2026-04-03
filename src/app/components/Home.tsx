@@ -130,12 +130,13 @@ export function Home() {
             </motion.div>
 
             {/* RIGHT IMAGE */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative order-first lg:order-last"
-            >
+<motion.div
+  initial={{ opacity: 0, x: 50, rotate: -0.2 }}
+  animate={{ opacity: 1, x: 0, rotate: -0.2 }}
+  transition={{ duration: 0.8, delay: 0.2 }}
+  whileHover={{ rotate: -2, scale: 1.02 }}
+ className="relative order-first lg:order-last -mt-10"
+>
               <div className="w-full max-w-sm sm:max-w-md mx-auto">
 
                 {/* Image with rough border */}

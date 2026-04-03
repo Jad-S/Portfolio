@@ -248,7 +248,7 @@ export function About() {
               {
                 title: "C#",
                 icon: SiSharp,
-                text: "I use C# mostly for backend work. I like working with it and I’m still figuring out better ways to structure my code.",
+                text: "I use C# mostly for backend work. I like working with it for most of my backend logic, PHP is also fine...",
                 side: "right",
               },
               {
